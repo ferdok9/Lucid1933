@@ -1,0 +1,25 @@
+[PROJECT]
+Target=build\default\production\Sources\Lucid_Main_1933.hex
+Processor_Text=PIC16F1933
+CCSVersion=5.050
+Compiler=PCM
+[Target Data]
+FileList=Sources\Lucid_Main_1933.c
+[build\default\production\Sources\Lucid_Main_1933.c]
+Type=4
+[mru-list]
+1=build\default\production\Sources\Lucid_Main_1933.c
+[dist\default\production\Lucid_Main_1933.c]
+Type=4
+
+[ProjectLog]
+Days=1
+D1=15-01-2016
+D1_L=2
+D1_L1=[70565]Project Opened.
+D1_L2=[70570]Project Closed.
+[build\default\debug\Sources\Lucid_Main_1933.c]
+Type=4
+[Units]
+Count=1
+1=Lucid_Main_1933 (main)

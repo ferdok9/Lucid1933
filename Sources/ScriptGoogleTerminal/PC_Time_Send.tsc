@@ -1,0 +1,14 @@
+//MM/dd/yyyy
+//HH:mm:ss
+// Terminal Script
+// Created: 7/23/2015 4:54:55 PM
+//******************************
+program test;
+begin
+    writeln(#013 + #010 + GetTimeStr() + #035 + #036 
+                        + GetDateStr() + #013 + #010);
+    ComSendstr(#013 + #010 + GetTimeStr() + #035 + #036
+                           + GetDateStr() + #013 + #010);
+//    Delay(100);
+    writeln('End');
+end.

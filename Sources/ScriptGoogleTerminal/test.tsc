@@ -1,0 +1,10 @@
+//******************************
+// Terminal Script
+// Created: 7/23/2015 4:54:55 PM
+//******************************
+program test;
+begin
+    writeln(GetTimeStr());
+    ComSendstr(#013 + GetTimeStr());
+    writeln('End');
+end.

@@ -1,0 +1,798 @@
+Terminal log file
+Date: 18/11/2015 - 13:55:27
+-----------------------------------------------
+<?xml version='1.0'?>
+<?xml-stylesheet href='CmpTestReport.xslt' type='text/xsl' title='default stylesheet' ?>
+<cfg_list>
+<cfg>
+<cfg_desc>Standard test configuration</cfg_desc>
+<cmp>LDB_BUZ</cmp>
+<cmp_desc>(LDB_BUZ component)</cmp_desc>
+<prj>EDISON IC project</prj>
+<tc ref="">
+<tcd>TEST 1: Test after Init()</tcd>
+<ts>
+<pre>Test after Init()</pre>
+<exp>Initialization shall pass without assertion</exp>
+<cmt></cmt>
+<ok>3</ok>
+</ts>
+</tc>
+<tc ref="">
+<tcd>TEST 2: Test for invalid message buffer size</tcd>
+<ts>
+<pre>Send incorrect message size</pre>
+<exp>Tests should assert</exp>
+<cmt></cmt>
+<assert File="d:\edison\development\application\ev\ll\verxx.xx\cmp\ldb\ldb_buz_1\ldb_buz.c" Line="603">
+( (BOOL)(0==1) ) </assert>
+<assert File="d:\edison\development\application\ev\ll\verxx.xx\cmp\ldb\ldb_buz_1\ldb_buz.c" Line="664">
+( (BOOL)(0==1) ) </assert>
+<assert File="d:\edison\development\application\ev\ll\verxx.xx\cmp\ldb\ldb_buz_1\ldb_buz.c" Line="695">
+&gt;Lng == (U16)2 </assert>
+<ok>3</ok>
+</ts>
+</tc>
+<tc ref="">
+<tcd>TEST 3: Test for message buffer is NULL</tcd>
+<ts>
+<pre>pMsg.pBuffer == NULL</pre>
+<exp>Test should assert</exp>
+<cmt></cmt>
+<assert File="d:\edison\development\application\ev\ll\verxx.xx\cmp\ldb\ldb_buz_1\ldb_buz.c" Line="675">
+( (BOOL)(0==1) ) </assert>
+<assert File="d:\edison\development\application\ev\ll\verxx.xx\cmp\ldb\ldb_buz_1\ldb_buz.c" Line="675">
+( (BOOL)(0==1) ) </assert>
+<assert File="d:\edison\development\application\ev\ll\verxx.xx\cmp\ldb\ldb_buz_1\ldb_buz.c" Line="701">
+( (BOOL)(0==1) ) </assert>
+<ok>3</ok>
+</ts>
+</tc>
+<tc ref="">
+<tcd>TEST 4: Volume control</tcd>
+<ts>
+<pre>Set volume to 40%</pre>
+<exp>Volume is set to 40%</exp>
+<cmt></cmt>
+<ok>1</ok>
+</ts>
+</tc>
+<tc ref="">
+<tcd>TEST 5: Playing sounds</tcd>
+<ts>
+<pre>Author of test should hear sounds.                             Test waits for user response Y or N </pre>
+<exp></exp>
+<cmt></cmt>
+<ok>0</ok>
+</ts>
+</tc>
+<tc ref="">
+<tcd></tcd>
+<ts>
+<pre>Start sound #2 for sound set 0</pre>
+<exp>Sound could be heard and it is correct</exp>
+<cmt></cmt>
+<ok>2</ok>
+</ts>
+</tc>
+<tc ref="">
+<tcd></tcd>
+<ts>
+<pre></pre>
+<exp></exp>
+<cmt> Sound #2 OK </cmt>
+<ok>2</ok>
+</ts>
+</tc>
+<tc ref="">
+<tcd></tcd>
+<ts>
+<pre>Start sound #3 for sound set 0</pre>
+<exp>Sound could be heard and it is correct</exp>
+<cmt></cmt>
+<ok>2</ok>
+</ts>
+</tc>
+<tc ref="">
+<tcd></tcd>
+<ts>
+<pre></pre>
+<exp></exp>
+<cmt> Sound #3 OK </cmt>
+<ok>2</ok>
+</ts>
+</tc>
+<tc ref="">
+<tcd></tcd>
+<ts>
+<pre>Start sound #4 for sound set 0</pre>
+<exp>Sound could be heard and it is correct</exp>
+<cmt></cmt>
+<ok>2</ok>
+</ts>
+</tc>
+<tc ref="">
+<tcd></tcd>
+<ts>
+<pre></pre>
+<exp></exp>
+<cmt> Sound #4 OK </cmt>
+<ok>2</ok>
+</ts>
+</tc>
+<tc ref="">
+<tcd></tcd>
+<ts>
+<pre>Start sound #5 for sound set 0</pre>
+<exp>Sound could be heard and it is correct</exp>
+<cmt></cmt>
+<ok>2</ok>
+</ts>
+</tc>
+<tc ref="">
+<tcd></tcd>
+<ts>
+<pre></pre>
+<exp></exp>
+<cmt> Sound #5 OK </cmt>
+<ok>2</ok>
+</ts>
+</tc>
+<tc ref="">
+<tcd></tcd>
+<ts>
+<pre>Start sound #6 for sound set 0</pre>
+<exp>Sound could be heard and it is correct</exp>
+<cmt></cmt>
+<ok>2</ok>
+</ts>
+</tc>
+<tc ref="">
+<tcd></tcd>
+<ts>
+<pre></pre>
+<exp></exp>
+<cmt> Sound #6 OK </cmt>
+<ok>2</ok>
+</ts>
+</tc>
+<tc ref="">
+<tcd></tcd>
+<ts>
+<pre>Start sound #7 for sound set 0</pre>
+<exp>Sound could be heard and it is correct</exp>
+<cmt></cmt>
+<ok>2</ok>
+</ts>
+</tc>
+<tc ref="">
+<tcd></tcd>
+<ts>
+<pre></pre>
+<exp></exp>
+<cmt> Sound #7 OK </cmt>
+<ok>2</ok>
+</ts>
+</tc>
+<tc ref="">
+<tcd></tcd>
+<ts>
+<pre>Start sound #8 for sound set 0</pre>
+<exp>Sound could be heard and it is correct</exp>
+<cmt></cmt>
+<ok>2</ok>
+</ts>
+</tc>
+<tc ref="">
+<tcd></tcd>
+<ts>
+<pre></pre>
+<exp></exp>
+<cmt> Sound #8 OK </cmt>
+<ok>2</ok>
+</ts>
+</tc>
+<tc ref="">
+<tcd></tcd>
+<ts>
+<pre>Start sound #9 for sound set 0</pre>
+<exp>Sound could be heard and it is correct</exp>
+<cmt></cmt>
+<ok>2</ok>
+</ts>
+</tc>
+<tc ref="">
+<tcd></tcd>
+<ts>
+<pre></pre>
+<exp></exp>
+<cmt> Sound #9 OK </cmt>
+<ok>2</ok>
+</ts>
+</tc>
+<tc ref="">
+<tcd></tcd>
+<ts>
+<pre>Start sound #10 for sound set 0</pre>
+<exp>Sound could be heard and it is correct</exp>
+<cmt></cmt>
+<ok>2</ok>
+</ts>
+</tc>
+<tc ref="">
+<tcd></tcd>
+<ts>
+<pre></pre>
+<exp></exp>
+<cmt> Sound #10 OK </cmt>
+<ok>2</ok>
+</ts>
+</tc>
+<tc ref="">
+<tcd></tcd>
+<ts>
+<pre>Start sound #11 for sound set 0</pre>
+<exp>Sound could be heard and it is correct</exp>
+<cmt></cmt>
+<ok>2</ok>
+</ts>
+</tc>
+<tc ref="">
+<tcd></tcd>
+<ts>
+<pre></pre>
+<exp></exp>
+<cmt> Sound #11 OK </cmt>
+<ok>2</ok>
+</ts>
+</tc>
+<tc ref="">
+<tcd></tcd>
+<ts>
+<pre>Start sound #13 for sound set 0</pre>
+<exp>Sound could be heard and it is correct</exp>
+<cmt></cmt>
+<ok>2</ok>
+</ts>
+</tc>
+<tc ref="">
+<tcd></tcd>
+<ts>
+<pre></pre>
+<exp></exp>
+<cmt> Sound #13 OK </cmt>
+<ok>2</ok>
+</ts>
+</tc>
+<tc ref="">
+<tcd></tcd>
+<ts>
+<pre>Start sound #14 for sound set 0</pre>
+<exp>Sound could be heard and it is correct</exp>
+<cmt></cmt>
+<ok>2</ok>
+</ts>
+</tc>
+<tc ref="">
+<tcd></tcd>
+<ts>
+<pre></pre>
+<exp></exp>
+<cmt> Sound #14 OK </cmt>
+<ok>2</ok>
+</ts>
+</tc>
+<tc ref="">
+<tcd></tcd>
+<ts>
+<pre>Start sound #15 for sound set 0</pre>
+<exp>Sound could be heard and it is correct</exp>
+<cmt></cmt>
+<ok>2</ok>
+</ts>
+</tc>
+<tc ref="">
+<tcd></tcd>
+<ts>
+<pre></pre>
+<exp></exp>
+<cmt> Sound #15 OK </cmt>
+<ok>2</ok>
+</ts>
+</tc>
+<tc ref="">
+<tcd></tcd>
+<ts>
+<pre>Start sound #16 for sound set 0</pre>
+<exp>Sound could be heard and it is correct</exp>
+<cmt></cmt>
+<ok>2</ok>
+</ts>
+</tc>
+<tc ref="">
+<tcd></tcd>
+<ts>
+<pre></pre>
+<exp></exp>
+<cmt> Sound #16 OK </cmt>
+<ok>2</ok>
+</ts>
+</tc>
+<tc ref="">
+<tcd></tcd>
+<ts>
+<pre>Start sound #22 for sound set 0</pre>
+<exp>Sound could be heard and it is correct</exp>
+<cmt></cmt>
+<ok>2</ok>
+</ts>
+</tc>
+<tc ref="">
+<tcd></tcd>
+<ts>
+<pre></pre>
+<exp></exp>
+<cmt> Sound #22 OK </cmt>
+<ok>2</ok>
+</ts>
+</tc>
+<tc ref="">
+<tcd></tcd>
+<ts>
+<pre>Start sound #26 for sound set 0</pre>
+<exp>Sound could be heard and it is correct</exp>
+<cmt></cmt>
+<ok>2</ok>
+</ts>
+</tc>
+<tc ref="">
+<tcd></tcd>
+<ts>
+<pre></pre>
+<exp></exp>
+<cmt> Sound #26 OK </cmt>
+<ok>2</ok>
+</ts>
+</tc>
+<tc ref="">
+<tcd></tcd>
+<ts>
+<pre>Start user sound for sound set 0</pre>
+<exp>Sound could be heard and it is correct</exp>
+<cmt></cmt>
+<ok>2</ok>
+</ts>
+</tc>
+<tc ref="">
+<tcd></tcd>
+<ts>
+<pre></pre>
+<exp></exp>
+<cmt> Sound #29 OK </cmt>
+<ok>2</ok>
+</ts>
+</tc>
+<tc ref="">
+<tcd></tcd>
+<ts>
+<pre>Start frequency test for sound set 0</pre>
+<exp>Sound could be heard and it is correct</exp>
+<cmt></cmt>
+<ok>2</ok>
+</ts>
+</tc>
+<tc ref="">
+<tcd></tcd>
+<ts>
+<pre></pre>
+<exp></exp>
+<cmt> Sound #30 OK </cmt>
+<ok>2</ok>
+</ts>
+</tc>
+<tc ref="">
+<tcd></tcd>
+<ts>
+<pre>Start sound #2 for sound set 1</pre>
+<exp>Sound could be heard and it is correct</exp>
+<cmt></cmt>
+<ok>2</ok>
+</ts>
+</tc>
+<tc ref="">
+<tcd></tcd>
+<ts>
+<pre></pre>
+<exp></exp>
+<cmt> Sound #2 OK </cmt>
+<ok>2</ok>
+</ts>
+</tc>
+<tc ref="">
+<tcd></tcd>
+<ts>
+<pre>Start sound #3 for sound set 1</pre>
+<exp>Sound could be heard and it is correct</exp>
+<cmt></cmt>
+<ok>2</ok>
+</ts>
+</tc>
+<tc ref="">
+<tcd></tcd>
+<ts>
+<pre></pre>
+<exp></exp>
+<cmt> Sound #3 OK </cmt>
+<ok>2</ok>
+</ts>
+</tc>
+<tc ref="">
+<tcd></tcd>
+<ts>
+<pre>Start sound #4 for sound set 1</pre>
+<exp>Sound could be heard and it is correct</exp>
+<cmt></cmt>
+<ok>2</ok>
+</ts>
+</tc>
+<tc ref="">
+<tcd></tcd>
+<ts>
+<pre></pre>
+<exp></exp>
+<cmt> Sound #4 OK </cmt>
+<ok>2</ok>
+</ts>
+</tc>
+<tc ref="">
+<tcd></tcd>
+<ts>
+<pre>Start sound #5 for sound set 1</pre>
+<exp>Sound could be heard and it is correct</exp>
+<cmt></cmt>
+<ok>2</ok>
+</ts>
+</tc>
+<tc ref="">
+<tcd></tcd>
+<ts>
+<pre></pre>
+<exp></exp>
+<cmt> Sound #5 OK </cmt>
+<ok>2</ok>
+</ts>
+</tc>
+<tc ref="">
+<tcd></tcd>
+<ts>
+<pre>Start sound #6 for sound set 1</pre>
+<exp>Sound could be heard and it is correct</exp>
+<cmt></cmt>
+<ok>2</ok>
+</ts>
+</tc>
+<tc ref="">
+<tcd></tcd>
+<ts>
+<pre></pre>
+<exp></exp>
+<cmt> Sound #6 OK </cmt>
+<ok>2</ok>
+</ts>
+</tc>
+<tc ref="">
+<tcd></tcd>
+<ts>
+<pre>Start sound #7 for sound set 1</pre>
+<exp>Sound could be heard and it is correct</exp>
+<cmt></cmt>
+<ok>2</ok>
+</ts>
+</tc>
+<tc ref="">
+<tcd></tcd>
+<ts>
+<pre></pre>
+<exp></exp>
+<cmt> Sound #7 OK </cmt>
+<ok>2</ok>
+</ts>
+</tc>
+<tc ref="">
+<tcd></tcd>
+<ts>
+<pre>Start sound #8 for sound set 1</pre>
+<exp>Sound could be heard and it is correct</exp>
+<cmt></cmt>
+<ok>2</ok>
+</ts>
+</tc>
+<tc ref="">
+<tcd></tcd>
+<ts>
+<pre></pre>
+<exp></exp>
+<cmt> Sound #8 OK </cmt>
+<ok>2</ok>
+</ts>
+</tc>
+<tc ref="">
+<tcd></tcd>
+<ts>
+<pre>Start sound #10 for sound set 1</pre>
+<exp>Sound could be heard and it is correct</exp>
+<cmt></cmt>
+<ok>2</ok>
+</ts>
+</tc>
+<tc ref="">
+<tcd></tcd>
+<ts>
+<pre></pre>
+<exp></exp>
+<cmt> Sound #10 OK </cmt>
+<ok>2</ok>
+</ts>
+</tc>
+<tc ref="">
+<tcd></tcd>
+<ts>
+<pre>Start sound #11 for sound set 1</pre>
+<exp>Sound could be heard and it is correct</exp>
+<cmt></cmt>
+<ok>2</ok>
+</ts>
+</tc>
+<tc ref="">
+<tcd></tcd>
+<ts>
+<pre></pre>
+<exp></exp>
+<cmt> Sound #11 OK </cmt>
+<ok>2</ok>
+</ts>
+</tc>
+<tc ref="">
+<tcd></tcd>
+<ts>
+<pre>Start sound #13 for sound set 1</pre>
+<exp>Sound could be heard and it is correct</exp>
+<cmt></cmt>
+<ok>2</ok>
+</ts>
+</tc>
+<tc ref="">
+<tcd></tcd>
+<ts>
+<pre></pre>
+<exp></exp>
+<cmt> Sound #13 OK </cmt>
+<ok>2</ok>
+</ts>
+</tc>
+<tc ref="">
+<tcd></tcd>
+<ts>
+<pre>Start sound #14 for sound set 1</pre>
+<exp>Sound could be heard and it is correct</exp>
+<cmt></cmt>
+<ok>2</ok>
+</ts>
+</tc>
+<tc ref="">
+<tcd></tcd>
+<ts>
+<pre></pre>
+<exp></exp>
+<cmt> Sound #14 OK </cmt>
+<ok>2</ok>
+</ts>
+</tc>
+<tc ref="">
+<tcd></tcd>
+<ts>
+<pre>Start sound #15 for sound set 1</pre>
+<exp>Sound could be heard and it is correct</exp>
+<cmt></cmt>
+<ok>2</ok>
+</ts>
+</tc>
+<tc ref="">
+<tcd></tcd>
+<ts>
+<pre></pre>
+<exp></exp>
+<cmt> Sound #15 OK </cmt>
+<ok>2</ok>
+</ts>
+</tc>
+<tc ref="">
+<tcd></tcd>
+<ts>
+<pre>Start sound #16 for sound set 1</pre>
+<exp>Sound could be heard and it is correct</exp>
+<cmt></cmt>
+<ok>2</ok>
+</ts>
+</tc>
+<tc ref="">
+<tcd></tcd>
+<ts>
+<pre></pre>
+<exp></exp>
+<cmt> Sound #16 OK </cmt>
+<ok>2</ok>
+</ts>
+</tc>
+<tc ref="">
+<tcd></tcd>
+<ts>
+<pre>Start sound #22 for sound set 1</pre>
+<exp>Sound could be heard and it is correct</exp>
+<cmt></cmt>
+<ok>2</ok>
+</ts>
+</tc>
+<tc ref="">
+<tcd></tcd>
+<ts>
+<pre></pre>
+<exp></exp>
+<cmt> Sound #22 OK </cmt>
+<ok>2</ok>
+</ts>
+</tc>
+<tc ref="">
+<tcd></tcd>
+<ts>
+<pre>Start sound #24 for sound set 1</pre>
+<exp>Sound could be heard and it is correct</exp>
+<cmt></cmt>
+<ok>2</ok>
+</ts>
+</tc>
+<tc ref="">
+<tcd></tcd>
+<ts>
+<pre></pre>
+<exp></exp>
+<cmt> Sound #24 OK </cmt>
+<ok>2</ok>
+</ts>
+</tc>
+<tc ref="">
+<tcd></tcd>
+<ts>
+<pre>Start sound #25 for sound set 1</pre>
+<exp>Sound could be heard and it is correct</exp>
+<cmt></cmt>
+<ok>2</ok>
+</ts>
+</tc>
+<tc ref="">
+<tcd></tcd>
+<ts>
+<pre></pre>
+<exp></exp>
+<cmt> Sound #25 OK </cmt>
+<ok>2</ok>
+</ts>
+</tc>
+<tc ref="">
+<tcd></tcd>
+<ts>
+<pre>Start sound #26 for sound set 1</pre>
+<exp>Sound could be heard and it is correct</exp>
+<cmt></cmt>
+<ok>2</ok>
+</ts>
+</tc>
+<tc ref="">
+<tcd></tcd>
+<ts>
+<pre></pre>
+<exp></exp>
+<cmt> Sound #26 OK </cmt>
+<ok>2</ok>
+</ts>
+</tc>
+<tc ref="">
+<tcd></tcd>
+<ts>
+<pre>Start sound #27 for sound set 1</pre>
+<exp>Sound could be heard and it is correct</exp>
+<cmt></cmt>
+<ok>2</ok>
+</ts>
+</tc>
+<tc ref="">
+<tcd></tcd>
+<ts>
+<pre></pre>
+<exp></exp>
+<cmt> Sound #27 OK </cmt>
+<ok>2</ok>
+</ts>
+</tc>
+<tc ref="">
+<tcd></tcd>
+<ts>
+<pre>Start sound #28 for sound set 1</pre>
+<exp>Sound could be heard and it is correct</exp>
+<cmt></cmt>
+<ok>2</ok>
+</ts>
+</tc>
+<tc ref="">
+<tcd></tcd>
+<ts>
+<pre></pre>
+<exp></exp>
+<cmt> Sound #28 OK </cmt>
+<ok>2</ok>
+</ts>
+</tc>
+<tc ref="">
+<tcd></tcd>
+<ts>
+<pre>Start user sound for sound set 1</pre>
+<exp>Sound could be heard and it is correct</exp>
+<cmt></cmt>
+<ok>2</ok>
+</ts>
+</tc>
+<tc ref="">
+<tcd></tcd>
+<ts>
+<pre></pre>
+<exp></exp>
+<cmt> Sound #29 OK </cmt>
+<ok>2</ok>
+</ts>
+</tc>
+<tc ref="">
+<tcd></tcd>
+<ts>
+<pre>Start frequency test for sound set 1</pre>
+<exp>Sound could be heard and it is correct</exp>
+<cmt></cmt>
+<ok>2</ok>
+</ts>
+</tc>
+<tc ref="">
+<tcd></tcd>
+<ts>
+<pre></pre>
+<exp></exp>
+<cmt> Sound #30 OK </cmt>
+<ok>2</ok>
+</ts>
+</tc>
+<tc ref="">
+<tcd>TEST 6: Component stop (sleep)</tcd>
+<ts>
+<pre>Stop component</pre>
+<exp>Component stops successfully</exp>
+<cmt></cmt>
+<ok>2</ok>
+</ts>
+</tc>
+<time>11:12:13 </time>
+<date>Nov 18 2015</date>
+<platform>Target</platform>
+NumTests="168" NumFailed="0" <user> $Author:   ikulin  $</user>
+<sources>LDB_BUZ.c(1.12), LDB_BUZ.h(1.2), LDB_BUZp.h(1.18)</sources>
+<test_file>d:\edison\development\application\ev\ll\verxx.xx\cmp\ldb\ldb_buz_1\componenttest\test.c</test_file></cfg>
+</cfg_list>
+<?xml version='1.0'?>
+<?xml-stylesheet href='CmpTestReport.xslt' type='text/xsl' title='default stylesheet' ?>
+<cfg_list>
+<cfg>
+<cfg_desc>Standard test configuration</cfg_desc>
+<cmp>LDB_BUZ</cmp>
+<cmp_desc>(LDB_BUZ component)</cmp_desc>
+<prj>EDISON IC project</prj>
+
+-----------------------------------------------
+Date: 18/11/2015 - 13:57:56
+End log file

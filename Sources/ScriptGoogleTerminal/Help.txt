@@ -1,0 +1,119 @@
+DB9 PINOUT on PC:
+1 - CD - Carrier Detect (IN)
+2 - RX - Data Receive (IN)
+3 - TX - Data Transmit (OUT)
+4 - DTR - Data Terminal Ready (OUT)
+5 - GND - Ground
+6 - DSR - Data Set Ready (IN)
+7 - RTS - Request To Send (OUT)
+8 - CTS - Clear To Send (IN)
+9 - RI - Ring Indicator (IN)
+
+
+HOT KEYS:
+F1..F12 - send macros #1..#12
+CTRL+F1..F12 - send macros #13..#24
+ESC - clear Rx box
+
+(in Rx box):
+CTRL+F - find hex sequence
+CTRL+A - select all
+CTRL+C - copy selection
+CTRL+S - save Rx bo to file
+CTRL+Del - clear Rx box
+
+
+HOW TO USE MACROS?
+In macros you can use all characters from keyboard and any ASCII char if 
+you use $xx or #xxx. Where $xx is hex and #xxx dec format of ascii code. 
+If you want to use # or $ char in macro you should type it twice ($$=$ and 
+##=#).
+To calculate XOR checksum byte use %XOR command.
+To calculate SUM (1byte sum) checksum byte use %SUM command.
+To insert delay in macro string use %DLYxxxx, where xxxx is value 0000-
+9999 in ms.
+To send break signal in macro string use %BRKxxxx, where xxxx is value 
+0000-
+9999 in ms.
+
+%RUN"cmd.exe" - this will run command line prompt
+
+%URL"http://www.google.com" - guess what?! ;)
+
+%URL"mailto:braypp@gmail.com?subject=terminal url test&body=test" - 
+compose mail (without sending)
+
+%M03 - this will send/run macro #3 (there are some limits when using this)
+
+Macro examples...
+
+example 1.
+abcdefgh123456 - this will send 'abcdefgh123456'
+
+example 2.
+AT#013#010 - this will send AT and "CR" + "LF" (cariage return + line 
+feed)
+
+example 3.
+X1##Y2##Z3##$0D$0A - this will send 'X1#Y2#Z3#"CR""LF"'
+
+example 4.
+$$value=123$0D - this will send '$value=123"CR"'
+
+example 5.
+$01$02$03$04$05%XOR - this will send $01 $02 $03 $04 $05 and 
+calculated 
+XOR byte $01 
+
+example 6.
+ABC%DLY0123DEF - this will send ABC and after ~123ms DEF
+
+example 7.
+$01$02$03%SUM - this will send $01$02$03$06
+
+example 8:
+$00$FF$00$FF%BRK0001 - this will send short DMX512 packet (generic 
+RGB node on addr#1- red on, green off, blue on) 
+
+Macro string can be up to 128 characters long.
+
+
+SIMPLE SCRIPTING (experimental) - NEW!
+
+- pascal syntax
+
+Writeln(s: string) - write line to Debug window
+Readln(var s: string) - opens input form for string/line 
+Random(range: Longint): Longint - return random number in range
+StrCpy(s1:string, s2:string): string - copy s1 and s2 to new string
+GetTimeStr(): string - return current time in string
+GetDateStr(): string - return current date in string
+Beep() - sound signal
+Delay(ms: integer) - simple delay (milli seconds)
+ShowMessage(s: string) - show message box
+RunApl(aplfilename: string) - run application
+Browse(url: string) - open url in default browser
+OpenFile(filename: string) - open file with default application
+
+ComSendchr(c: byte) - send one byte
+ComSendstr(s: string) - send string
+ComSendmacro(s: string) - send macro like string ($xx,#ddd,%XOR,%
+SUM...)
+ComReadchr() - read curent char/byte
+ComBaud(s: string) - set baudrate...'9600','19200',...
+ComDataBits(s: string) - set number of data bits...'5','6', '7', '8'
+ComParity(s: string) - set parity...'none','odd', 'even', 'space', 'mark'
+SetRTS(state: boolean) - set or clear RTS line
+SetDTR(state: boolean) - set or clear DTR line
+ComSendBreak() - send BREAK signal (for DMX512 testing)
+
+Graph_Rx(enable: boolean) - enable/disable Rx graph
+Graph_Text(x: integer; y: integer; text: string) - print text on graph
+Graph_Clear() - clear graph 
+Graph_Point(x: integer; y: integer; color: string) - Plot point on graph; 
+  color:
+   'R' - red
+   'G' - green
+   'B' - blue
+   '0' - white
+   '1' - black
