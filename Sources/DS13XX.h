@@ -10,4 +10,6 @@ void DecodeInitPrintClock_3by(char * cMsgClockP);
 void SetSnoozeDelay_3by(char * cMsgClockP);
 void SetInitialDelay_3by(char * cMsgClockP);
 
+void AddTimeToAlarm_3by(void);
+
 #endif

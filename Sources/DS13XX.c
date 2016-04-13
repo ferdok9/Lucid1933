@@ -124,3 +124,29 @@ void SetInitialDelay_3by(char * cMsgClockP)
 #endif
 }
 ////////////////////////////////////////////////////////////////////////////////
+void AddTimeToAlarm_3by(void)
+{
+    uint8 u8AlarmTempL[7];
+    uint8 u8SnoozeDelayTempL[7];
+    
+    putc(13);
+    putc('O');putc('l');putc('d');putc('A');putc('l');putc('a');
+    putc('r');putc('m');
+    putc(' ');putc(' ');
+    putc('S');putc('n');putc('o');putc('o');putc('z');putc('e');
+
+    DS_Print_Clock_3by(u8Alarm, 1);
+    putc(' ');putc(' ');
+    DS_Print_Clock_3by(u8SnoozeDelay, 1);
+    putc(10);putc(13);
+            
+    DigitsToInt ( u8Alarm, u8AlarmTempL );
+    DigitsToInt ( u8SnoozeDelay, u8SnoozeDelayTempL );
+
+    AddTimeToClock( u8AlarmTempL, u8SnoozeDelayTempL );
+    IntToDigits ( u8AlarmTempL, u8Alarm);
+
+    putc('N');putc('e');putc('w');
+    putc('A');putc('l');putc('a');putc('r');putc('m');
+    DS_Print_Clock_3by(u8Alarm, 1);
+}

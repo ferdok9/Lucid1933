@@ -130,8 +130,8 @@ void AddTimeToAlarm(void)
     AddTimeToClock( u8AlarmTempL, u8SnoozeDelayTempL );
     IntToDigits ( u8AlarmTempL, u8Alarm);
 
-    putc('N');putc('e');putc('w');putc('A');putc('l');putc('a');
-    putc('r');putc('m');
+    putc('N');putc('e');putc('w');
+    putc('A');putc('l');putc('a');putc('r');putc('m');
     putc(10);putc(13);
     DS_Print_Clock(u8Alarm);
     

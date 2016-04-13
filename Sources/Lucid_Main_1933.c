@@ -59,7 +59,7 @@ void Main(void)
 
             if( AddSnoozeDelayFlagMask == ( u16ByteFlags & AddSnoozeDelayFlagMask ) )
             {
-                AddTimeToAlarm();
+                AddTimeToAlarm_3by();
                 u16ByteFlags &= ~AddSnoozeDelayFlagMask;
             }
             
@@ -114,6 +114,7 @@ void Main(void)
                     DS_Power_Pin = 1;
                     Delay_ms(2);
                     DS_Task();
+                    
                     if( SleepDelayFlagMask == ( u16ByteFlags2 & SleepDelayFlagMask) )
                     {
                         u8SleepCountL++;
@@ -128,11 +129,9 @@ void Main(void)
                         Delay_ms(2);
 //                        TBD 2 ms?
                         DS_Power_Pin = 0;
-
                         StartWakeUpFromUART();
-
                         u16ByteFlags &= ~OneSecondTaskFlagMask;
-//   as                     putc(13);putc('S');putc('l');putc('e');putc('e');putc('p');
+//                        putc(13);putc('S');putc('l');putc('e');putc('e');putc('p');
                         Delay_ms(2);
                         SLEEP();
                     }
