@@ -41,13 +41,13 @@ void Main(void)
         {
             if( SetSnoozeDelayFlagMask == ( u16ByteFlags & SetSnoozeDelayFlagMask ) )
             {
-                SetSnoozeDelay(cMsgClock);
+                SetSnoozeDelay_3by(cMsgClock);
                 u16ByteFlags &= ~SetSnoozeDelayFlagMask;
             }
 
             if( SetInitialDelayFlagMask == ( u16ByteFlags & SetInitialDelayFlagMask ) )
             {
-                SetInitialDelay(cMsgClock);
+                SetInitialDelay_3by(cMsgClock);
                 u16ByteFlags &= ~SetInitialDelayFlagMask;
             }
 
@@ -132,7 +132,7 @@ void Main(void)
                         StartWakeUpFromUART();
 
                         u16ByteFlags &= ~OneSecondTaskFlagMask;
-                        putc(13);putc('S');putc('l');putc('e');putc('e');putc('p');
+//                        putc(13);putc('S');putc('l');putc('e');putc('e');putc('p');
                         Delay_ms(2);
                         SLEEP();
                     }
