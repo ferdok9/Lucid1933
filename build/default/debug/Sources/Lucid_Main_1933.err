@@ -1,0 +1,6 @@
+F:\Chast_2\PROEKTI\Lucid\PIC16F1933\Lucid1933.X\Sources\SFR.h:118:2:  Warning#238  Duplicate #locate
+F:\Chast_2\PROEKTI\Lucid\PIC16F1933\Lucid1933.X\Sources\DS13XX.c:121:11:  Warning#202  Variable never used:   u8AlarmTempL
+F:\Chast_2\PROEKTI\Lucid\PIC16F1933\Lucid1933.X\Sources\DS13XX.c:122:11:  Warning#202  Variable never used:   u8SnoozeDelayTempL
+      Memory usage:   ROM=76%      RAM=40% - 61%
+      0 Errors,  3 Warnings.
+Build Successful.

@@ -1,0 +1,425 @@
+000     INDF0
+002     PCL
+003     STATUS
+004-005 @WRITE_PROGRAM_MEMORY8.P1
+004-005 @READ_PROGRAM_MEMORY8.P2
+004     FSR0L
+004-005 @READ_PACKED_MEMORY.P1
+004-005 @WRITE_PACKED_MEMORY.P2
+005     FSR0H
+006-007 @WRITE_PACKED_MEMORY.P1
+006     FSR1L
+006-007 @READ_PACKED_MEMORY.P1
+007     FSR1H
+008     BSR
+009     WREG
+00B     INTCON
+00B.3   IOCIE
+00B.5   TMR0IE
+00B.6   PEIE
+00B.7   GIE
+00C.0   PORTA0
+00C     PORTA
+00C.1   PORTA1
+00C.2   PORTA2
+00C.3   PORTA3
+00C.4   PORTA4
+00C.5   PORTA5
+00C.6   PORTA6
+00C.7   PORTA7
+00D.0   PORTB0
+00D     PORTB
+00D.1   PORTB1
+00D.2   PORTB2
+00D.3   PORTB3
+00D.5   PORTB5
+00D.6   PORTB6
+00D.7   PORTB7
+00E     PORTC
+00E.0   PORTC0
+00E.1   PORTC1
+00E.2   PORTC2
+00E.3   PORTC3
+00E.4   PORTC4
+00E.5   DS_Power_Pin
+00E.5   PORTC5
+00E.6   PORTC6
+00E.7   PORTC7
+010     PORTE
+011     PIR1
+011.1   TMR2IF
+011.5   RCIF
+012     PIR2
+013     PIR3
+015     TMR0
+016     TMR1L
+017     TMR1H
+018     T1CON
+019     T1GCON
+01A     TMR2
+01B     PR2
+01C     T2CON
+01E     CPSCON0
+01F     CPSCON1
+020     @INTERRUPT_AREA
+021     @INTERRUPT_AREA
+022     @INTERRUPT_AREA
+023     @INTERRUPT_AREA
+024     @INTERRUPT_AREA
+025     u8IncMaskFlag
+026     u8IncPWMFlag
+027     u8IncLEDFlag
+028-02D u8Moove
+02E-033 u8Duty
+034.0   u1StartFlagGlowAltL
+035-036 u16EffectCounterL
+037-038 u16TaskTimeCounterL
+039-03E u8Alarm
+03F-044 u8InitialDelay
+045-04A u8SnoozeDelay
+04B-04C u16ByteFlags
+04D-04E u16ByteFlags2
+04F     u8StaicByteFlags
+050-055 PWMDC
+056     u8PWMCounter
+057-06F,0A0-0A2 cMsgClock
+071     u8StateMashine
+072     u8MsgCount
+077     @SCRATCH
+078     @SCRATCH
+078     _RETURN_
+079     @SCRATCH
+07A     @SCRATCH
+08C     TRISA
+08C.0   TRISA0
+08C.1   TRISA1
+08C.2   TRISA2
+08C.3   TRISA3
+08C.4   TRISA4
+08C.5   TRISA5
+08C.6   TRISA6
+08C.7   TRISA7
+08D.0   TRISB0
+08D     TRISB
+08D.1   TRISB1
+08D.2   TRISB2
+08D.3   TRISB3
+08D.4   TRISB4
+08D.5   TRISB5
+08D.6   TRISB6
+08D.7   TRISB7
+08E     TRISC
+08E.5   DS_Power_Pin_TRIS
+090     TRISE
+091.0   TMR1IE
+091     PIE1
+091.5   RCIE
+092     PIE2
+093     PIE3
+093.5   CCP4IE
+095     OPTION_REG
+096     PCON
+097     WDTCON
+098     OSCTUNE
+099     OSCCON
+09A.0   HFIOFS
+09A     OSCSTAT
+09B     ADRESL
+09C     ADRESH
+09D     ADCON0
+09E     ADCON1
+0A3     MAIN.u8SleepCountL
+0A4-0AA MAIN.u8ClockL
+0AB-0AC SetInitialDelay_3by.cMsgClockP
+0AB-0AC DecodeInitPrintClock_3by.cMsgClockP
+0AB-0AC DS_Read_Clock_3by.pDataP
+0AB-0B1 AddTimeToAlarm_3by.u8AlarmTempL
+0AB-0BA DS_Task.DataL
+0AB-0AC SetSnoozeDelay_3by.cMsgClockP
+0AB     DS_Init.u8WaitForComunicationL
+0AB     Glow_Alt.u8CurLEDL
+0AC-0B1 DS_Init.u8Data
+0AD-0B2 DecodeInitPrintClock_3by.u8ClockSetL
+0AD-0AF DS_Read_Clock_3by.ClockBuff
+0AE     NextLed.u8CurLEDP
+0AE     Glow_Alt.@SCRATCH1
+0AF     NextLed.u8NextLEDL
+0AF     Glow_Alt.@SCRATCH2
+0B0     NextLed.u8TempXthBit
+0B0     DS_Read_Clock_3by.@SCRATCH1
+0B0     Glow_Alt.@SCRATCH3
+0B1     DS_Read_Clock_3by.@SCRATCH2
+0B2     @delay_ms1.P1
+0B2-0B3 Set_Xth_Bit.u8ByteP
+0B2-0B8 AddTimeToAlarm_3by.u8SnoozeDelayTempL
+0B2     DS_Init_OutClock.u8ClockOutL
+0B2     DS_Write_Test.rtcreg
+0B2     DS_Init_Clock.u8FlagInitP
+0B2     DS_Read_Clock_3by.@SCRATCH3
+0B2     NextLed.@SCRATCH1
+0B3     DS_Init_Clock_3by.u8FlagInitP
+0B3-0B4 DS_String_To_Massiv_Clock_3by.u8ClockSetP
+0B3     DS_Write_Test.rtc_data
+0B3-0B4 DS_Init_Clock.pDataP
+0B3     DS_Read_Clock_3by.@SCRATCH4
+0B3     NextLed.@SCRATCH2
+0B4-0B5 DS_Init_Clock_3by.pDataP
+0B4     DS_Write_Test.ick
+0B4     Set_Xth_Bit.u8XthBitP
+0B5     DS_Init_Clock.u8TenSecL
+0B5-0B6 DS_String_To_Massiv_Clock_3by.cMsgClockP
+0B6     DS_Init_Clock_3by.u8SecL
+0B6     DS_Init_Clock.u8SecL
+0B7     DS_Init_Clock_3by.u8MinL
+0B7     DS_Init_Clock.u8TenMinL
+0B7     Set_Xth_Bit.@SCRATCH1
+0B8     DS_Init_Clock.u8MinL
+0B8     DS_Init_Clock_3by.u8HourL
+0B8     DS_String_To_Massiv_Clock_3by.@SCRATCH1
+0B8     Set_Xth_Bit.@SCRATCH2
+0B9     DS_Init_Clock.u8TenHourL
+0B9     DS_String_To_Massiv_Clock_3by.@SCRATCH2
+0B9     Set_Xth_Bit.@SCRATCH3
+0BA     DS_Init_Clock.u8HourL
+0BA     DS_String_To_Massiv_Clock_3by.@SCRATCH3
+0BA     DS_Init_Clock_3by.@SCRATCH1
+0BB-0BC DS_Print_Clock_3by.pDataP
+0BB-0BC AddTimeToClock.u8ClockP
+0BB-0BC Menage_Alarma.pDataP
+0BB     DS_Write.u8AddresP
+0BB-0BC DS_Print_Clock.pDataP
+0BB     DS_String_To_Massiv_Clock_3by.@SCRATCH4
+0BB     DS_Init_Clock_3by.@SCRATCH2
+0BC-0BD DS_Write.pDataP
+0BC     @MUL88.P1
+0BD-0BE AddTimeToClock.u8AddedTimeP
+0BD     Menage_Alarma.u8IsAlarmTimeL
+0BD     @MUL88.P1
+0BD     DS_Print_Clock_3by.u8NewLineP
+0BD     DS_Print_Clock.@SCRATCH1
+0BE-0BF Comppare_Time.pDataP
+0BE-0BF DS_Read_Clock.pDataP
+0BE     DS_Write.u8NumberOfBytesP
+0BE     DS_Print_Clock_3by.@SCRATCH1
+0BF-0C1 AddTimeToClock.u8ClockTempL
+0BF     DS_Write.u8ByteCountL
+0BF     @DIV88.P1
+0C0     @DIV88.P1
+0C0-0C2 DS_Read_Clock.ClockBuff
+0C0-0C1 Comppare_Time.pAlarmP
+0C0     DS_Write.@SCRATCH1
+0C1     @DIV88.@SCRATCH1
+0C2     AddTimeToClock.u8CarryL
+0C2     Comppare_Time.u8ReturnL
+0C3     DS_Reade_Pointer.u8AddresP
+0C3     AddTimeToClock.u8ForCounterL
+0C3     Comppare_Time.@SCRATCH1
+0C3     DS_Read_Clock.@SCRATCH1
+0C4-0C5 DS_Reade_Pointer.pDataP
+0C4     DS_Read_Clock.@SCRATCH2
+0C5     DS_Read_Clock.@SCRATCH3
+0C6     DS_Reade_Pointer.u8NumberOfBytesP
+0C6     AddTimeToClock.@SCRATCH1
+0C7     DS_Reade_Pointer.u8ByteCountL
+0C7     AddTimeToClock.@SCRATCH2
+0C8-0CA DS_Reade_Pointer.pAckL
+0C8     AddTimeToClock.@SCRATCH3
+0CC     @I2C_WRITEU_1.P1
+0CC     DS_Reade_Pointer.@SCRATCH1
+0CD     DS_Reade_Pointer.@SCRATCH2
+0CE     @I2C_READU_1.P1
+0D2     RDA_isr.c
+0D2     Interrupt_on_Change_ISR.B
+0D4     RDA_isr.@SCRATCH1
+0D5     RDA_isr.@SCRATCH2
+10D     LATB
+10E     LATC
+111     CM1CON0
+111.6   C1OUT
+112     CM1CON1
+113     CM2CON0
+113.6   C2OUT
+114     CM2CON1
+115     CMOUT
+116     BORCON
+117     FVRCON
+118     DACCON0
+119     DACCON1
+11A     SRCON0
+11B     SRCON1
+11D     APFCON
+11D.6   CCP3SEL
+18D     ANSELB
+191     EEADRL
+191-192 @WRITE_PROGRAM_MEMORY8.P1
+191-192 @READ_PROGRAM_MEMORY8.P2
+192     EEADRH
+193     EEDATL
+194     EEDATH
+195     EECON1
+196     EECON2
+199     RCREG
+19A     TXREG
+19B     SPBRGL
+19C     SPBRGH
+19D     RCSTA
+19E     TXSTA
+19F     BAUDCTR
+20D     WPUB
+210     WPUE
+211     SSPBUF
+212     SSPADD
+213     SSPMSK
+214     SSPSTAT
+215     SSPCON1
+216     SSPCON2
+217     SSPCON3
+291     CCP_1_LOW
+291     CCP_1
+292     CCP_1_HIGH
+292     CCPR1
+293     CCP1CON
+294     PWM1CON
+295     CCP1AS
+296     PSTR1CON
+298     CCPR2L
+298     CCP_2
+298     CCP_2_LOW
+299     CCP_2_HIGH
+299     CCPR2H
+29A     CCP2CON
+29B     PWM2CON
+29C     CCP2AS
+29D     PSTR2CON
+29E     CCPTMRS0
+29F     CCPTMRS1
+311     CCP_3
+311     CCP_3_LOW
+312     CCPR3
+312     CCP_3_HIGH
+313     CCP3CON
+314     PWM3CON
+315     CCP3AS
+316     PSTR3CON
+318     CCP_4_LOW
+318     CCPR4L
+318     CCP_4
+319     CCP_4_HIGH
+319     CCPR4H
+31A     CCP4CON
+31C     CCP_5
+31C     CCPR5L
+31C     CCP_5_LOW
+31D     CCP_5_HIGH
+31D     CCPR5H
+31E     CCP5CON
+394     IOCBP
+395     IOCBN
+396     IOCBF
+401     INDF1
+40A     PCLATH
+415     TMR4
+416     PR4
+417     T4CON
+41C     TMR6
+41D     PR6
+41E     T6CON
+
+ROM Allocation:
+00002D  @PUTCHARI_BIU_1
+000033  RDA_isr
+000198  @goto20125
+0001A0  Timer0_Interrupt
+0001D5  Interrupt_on_Change_ISR
+0001EB  StopWakeUpFromUART
+0001F6  @delay_ms1
+00020C  StartWakeUpFromUART
+000210  @I2C_WRITEU_1
+000225  DS_Write
+000252  @I2C_READU_1
+000262  DS_Reade_Pointer
+0002B7  Main_Init
+0002CA  I2C_Reade_Triger_Init
+0002D6  Timer0_Init
+0002DA  LEDInit
+0002EC  DS_Init
+0002FA  DS_Write_Test
+00035C  DS_Init_Clock
+0003C3  DS_Init_OutClock
+0003EA  @DIV88
+000401  DS_Print_Clock_3by
+000481  @MUL88
+0004A8  DS_String_To_Massiv_Clock_3by
+000524  SetSnoozeDelay_3by
+000553  SetInitialDelay_3by
+000582  Set_Xth_Bit
+00059F  Effects_Task
+0005AD  Glow_Alt
+0005DE  NextLed
+000663  AddTimeToAlarm_3by
+0006A7  AddTimeToClock
+000760  DS_Read_Clock_3by
+0007B8  DS_Read_Clock
+000800  DecodeInitPrintClock_3by
+000814  DS_Init_Clock_3by
+0008C1  DS_Task
+000924  DS_Print_Clock
+00099E  Menage_Alarma
+0009B0  Comppare_Time
+000A23  @cinit1
+000A23  MAIN
+000A5F  @cinit2
+
+Project Directory:
+    F:\Chast_2\PROEKTI\Lucid\PIC16F1933\Lucid1933.X\
+
+Project Files:
+    Sources\Lucid_Main_1933.c                               [13-Apr-16 23:09  CRC=C9927745]
+    C:\Program Files (x86)\PICC\devices\16F1933.h           [01-Oct-15 12:54  CRC=43203CAD]
+    Sources\Lucid_Main_1933.h                               [12-Apr-16 18:26  CRC=7907FB0C]
+    Sources\SFR.h                                           [18-Jan-16 00:42  CRC=013315A0]
+    Sources\RS232RX.c                                       [13-Apr-16 23:05  CRC=A68D363E]
+    Sources\Effects.h                                       [18-Jan-16 00:42  CRC=1192D26E]
+    Sources\DS1307.h                                        [12-Apr-16 19:03  CRC=DEFE5E19]
+    Sources\ClockCalculationTransformation.c                [14-Apr-16 01:30  CRC=F5CEC3AB]
+    Sources\ClockCalculationTransformation.h                [18-Feb-16 03:18  CRC=6E888E8D]
+    Sources\DS13XX.h                                        [13-Apr-16 22:43  CRC=F7204C3D]
+    Sources\PWMandTime.h                                    [10-Feb-16 20:15  CRC=EE0F4424]
+    Sources\DS1307.c                                        [13-Apr-16 22:44  CRC=16D07E4B]
+    Sources\DS13XX.c                                        [13-Apr-16 23:13  CRC=7693DC44]
+    Sources\PWMandTime.c                                    [12-Apr-16 19:00  CRC=63ABD7AB]
+    Sources\Effects.c                                       [18-Jan-16 00:42  CRC=0B3EC755]
+
+Source signature=6F20CEE0
+Program memory checksum=0000
+Program memory CRC=0000
+Hex file CRC=ACF3
+
+Units:
+    Sources\Lucid_Main_1933 (main)
+
+Compiler Settings:
+    Processor:      PIC16F1933
+    Pointer Size:   16
+    ADC Range:      0-65535
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+    ICD Provisions: Yes
+    Enhanced 16:    Yes
+    Compile Mode:       CCS5
+    Predefined symbols:
+       #define __DEBUG 1
+       #define __16F1933 1
+
+Output Files:
+    XREF file:   build\default\debug\Sources\Lucid_Main_1933.xsym
+    Errors:      build\default\debug\Sources\Lucid_Main_1933.err
+    Ext Symbols: build\default\debug\Sources\Lucid_Main_1933.esym
+    INHX8:       build\default\debug\Sources\Lucid_Main_1933.hex
+    Symbols:     build\default\debug\Sources\Lucid_Main_1933.sym
+    List:        build\default\debug\Sources\Lucid_Main_1933.lst
+    Debug/COFF:  build\default\debug\Sources\Lucid_Main_1933.cof
+    Project:     Lucid_Main_1933.ccspjt
+    Call Tree:   build\default\debug\Sources\Lucid_Main_1933.tre
+    Statistics:  build\default\debug\Sources\Lucid_Main_1933.STA

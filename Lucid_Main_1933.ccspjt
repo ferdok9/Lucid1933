@@ -1,5 +1,5 @@
 [PROJECT]
-Target=build\default\production\Sources\Lucid_Main_1933.hex
+Target=build\default\debug\Sources\Lucid_Main_1933.hex
 Processor_Text=PIC16F1933
 CCSVersion=5.050
 Compiler=PCM
@@ -8,7 +8,7 @@ FileList=Sources\Lucid_Main_1933.c
 [build\default\production\Sources\Lucid_Main_1933.c]
 Type=4
 [mru-list]
-1=build\default\production\Sources\Lucid_Main_1933.c
+1=build\default\debug\Sources\Lucid_Main_1933.c
 [dist\default\production\Lucid_Main_1933.c]
 Type=4
 

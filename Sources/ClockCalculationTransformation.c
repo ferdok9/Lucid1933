@@ -74,10 +74,10 @@ void AddTimeToClock(uint8 *u8ClockP, uint8 *u8AddedTimeP)
     uint8 u8CarryL = 0;
     uint8 u8ForCounterL = 2;
     
-    for( u8ForCounterL = 0; (0 <= u8ForCounterL && 3 > u8ForCounterL); u8ForCounterL++ )
+    for( u8ForCounterL = 2; (0 <= u8ForCounterL && 3 > u8ForCounterL); u8ForCounterL-- )
     {
         u8ClockTempL[u8ForCounterL] = u8ClockP[u8ForCounterL] + u8AddedTimeP[u8ForCounterL] + u8CarryL;
-        if(2 != u8ForCounterL)
+        if(0 != u8ForCounterL)
         {
             if( 60 <= u8ClockTempL[u8ForCounterL] ) 
             {

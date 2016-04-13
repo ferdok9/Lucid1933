@@ -1,0 +1,100 @@
+
+ROM used:   3107/4096 (76%)
+            3109/4096 (76%) including unused fragments
+
+            1.0 Average locations per line
+            4.1 Average locations per statement
+
+RAM used:   98/245 (40%) at main() level
+            149/245 (61%) worst case
+
+Stack used: 6 worst case (4 in main + 2 for interrupts)
+Stack size: 15
+
+Lines Stmts  %   Files
+----- ----- ---  -----
+  149   110  14  Sources\Lucid_Main_1933.c
+ 1007     0   0  C:\Program Files (x86)\PICC\devices\16F1933.h
+   45     0   0  Sources\Lucid_Main_1933.h
+  185     0   0  Sources\SFR.h
+  204   144  19  Sources\RS232RX.c
+   40     0   0  Sources\Effects.h
+  159     0   0  Sources\DS1307.h
+  133    35   5  Sources\ClockCalculationTransformation.c
+   32     0   0  Sources\ClockCalculationTransformation.h
+   16     0   0  Sources\DS13XX.h
+   68     0   0  Sources\PWMandTime.h
+  589   261  34  Sources\DS1307.c
+  145    86  11  Sources\DS13XX.c
+  173    69   9  Sources\PWMandTime.c
+  315    61   8  Sources\Effects.c
+----- -----
+ 3260   766 Total
+
+Page ROM  %  RAM    Vol Diff  Functions:
+---- --- --- ---    --- ----  ----------
+0     22   1    1             @delay_ms1
+0      6   0    0             @PUTCHARI_BIU_1
+0     21   1    1             @I2C_WRITEU_1
+0     16   1    1             @I2C_READU_1
+0     39   1    2             @MUL88
+0     23   1    3             @DIV88
+ Inline        12    802  9.4  AddTimeToClock
+0    357  11    3   4944  8.9  RDA_isr
+0      8   0    0             @goto20125
+1    354  11   16    861  4.9  DS_Task
+ Inline         7    290  4.5  DS_Init
+ Inline         3    227  5.5  Menage_Alarma
+ Inline         6    442  5.8  Comppare_Time
+ Inline         9   1097  8.1  DS_Init_Clock
+ Inline         1    228  3.7  DS_Init_OutClock
+ Inline         3    328  2.8  DS_Print_Clock
+0     70   2    8    544  4.5  DS_Read_Clock
+0     45   1    6    282  6.4  DS_Write
+0     85   3   10    716  7.8  DS_Reade_Pointer
+ Inline         3    798  5.4  DS_Write_Test
+0    128   4    4    572  5.5  DS_Print_Clock_3by
+0     88   3    9    505  5.0  DS_Read_Clock_3by
+0    124   4    8    396  4.2  DS_String_To_Massiv_Clock_3by
+1    193   6    8    138  3.1  DecodeInitPrintClock_3by
+ Inline         8    836  8.9  DS_Init_Clock_3by
+0     47   2    2    284  2.2  SetSnoozeDelay_3by
+0     47   2    2    284  2.2  SetInitialDelay_3by
+0    253   8   14    993  2.5  AddTimeToAlarm_3by
+0     53   2    0    959  5.3  Timer0_Interrupt
+ Inline         0     48  2.1  Timer0_Init
+ Inline         0    163  3.5  I2C_Reade_Triger_Init
+0     33   1    1    265  4.6  Interrupt_on_Change_ISR
+0      4   0    0     22  1.2  StartWakeUpFromUART
+ Inline         0     27  1.5  StopWakeUpFromUART
+ Inline         0    257  1.7  LEDInit
+0    196   6    0    104  2.9  Effects_Task
+0     29   1    6    114  4.5  Set_Xth_Bit
+ Inline         4   1122  9.7  Glow_Alt
+ Inline         5    543  7.3  NextLed
+0    307  10    0    339  2.8  Main_Init
+1    515  17    8   3102  9.0  MAIN
+ Inline         0             @cinit1
+
+Program metrics:
+    Functions               34
+    Statements              766
+    Comments                758
+    Volume (V)              38631
+    Difficulty (D)          167.8
+    Effort to implement (E) 6483260
+    Time to implement (T)   100 hours, 3 minutes
+    Est Delivered Bugs (B)  12
+    Cyclomatic Complexity   70
+    Maintainability (MI)    126
+
+ Segment     Used  Free
+-----------  ----  ----
+00000-00002     3  0  
+00003-00003     0  1  
+00004-0002C    41  0  
+0002D-007FF  2001  2  
+00800-00FFF  1062  986  
+
+
+
