@@ -87,7 +87,7 @@ void  RDA_isr(void)
                     
                 case 8:// Alarm Test
                     //#013#010X#013#08
-                    putc(13);putc('A');putc('L');putc('A');putc('R');putc('M');putc('T');putc('E');
+//                    putc(13);putc('A');putc('L');putc('A');putc('R');putc('M');putc('T');putc('E');
                     cMsgClock[u8MsgCount] = 0;
                     u8StateMashine = 0;
                     

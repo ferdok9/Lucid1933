@@ -90,8 +90,6 @@ void SetSnoozeDelay_3by(char * cMsgClockP)
 {
 #ifdef DebugPrintClock
     putc(13);putc('O');putc('l');putc('d');
-    putc(10);
-    putc(13);
     DS_Print_Clock_3by(u8SnoozeDelay,1);
 #endif
     
@@ -99,8 +97,6 @@ void SetSnoozeDelay_3by(char * cMsgClockP)
     
 #ifdef DebugPrintClock
     putc(13);putc('N');putc('e');putc('w');
-	putc(10);
-    putc(13);
     DS_Print_Clock_3by(u8SnoozeDelay,1);
 #endif
 }
@@ -109,8 +105,6 @@ void SetInitialDelay_3by(char * cMsgClockP)
 {
 #ifdef DebugPrintClock
     putc(13);putc('O');putc('l');putc('d');
-	putc(10);
-    putc(13);
     DS_Print_Clock_3by(u8InitialDelay,1);
 #endif
     
@@ -118,8 +112,6 @@ void SetInitialDelay_3by(char * cMsgClockP)
     
 #ifdef DebugPrintClock
     putc(13);putc('N');putc('e');putc('w');
-    putc(10);
-    putc(13);
     DS_Print_Clock_3by(u8InitialDelay,1);
 #endif
 }
@@ -137,14 +129,14 @@ void AddTimeToAlarm_3by(void)
 
     DS_Print_Clock_3by(u8Alarm, 1);
     putc(' ');putc(' ');
-    DS_Print_Clock_3by(u8SnoozeDelay, 1);
+    DS_Print_Clock_3by(u8SnoozeDelay, 0);
     putc(10);putc(13);
             
-    DigitsToInt ( u8Alarm, u8AlarmTempL );
-    DigitsToInt ( u8SnoozeDelay, u8SnoozeDelayTempL );
+//    DigitsToInt ( u8Alarm, u8AlarmTempL );
+//    DigitsToInt ( u8SnoozeDelay, u8SnoozeDelayTempL );
 
-    AddTimeToClock( u8AlarmTempL, u8SnoozeDelayTempL );
-    IntToDigits ( u8AlarmTempL, u8Alarm);
+    AddTimeToClock( u8Alarm, u8SnoozeDelay );
+//    IntToDigits ( u8AlarmTempL, u8Alarm);
 
     putc('N');putc('e');putc('w');
     putc('A');putc('l');putc('a');putc('r');putc('m');
