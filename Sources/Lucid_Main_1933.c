@@ -132,7 +132,7 @@ void Main(void)
                         StartWakeUpFromUART();
 
                         u16ByteFlags &= ~OneSecondTaskFlagMask;
-//                        putc(13);putc('S');putc('l');putc('e');putc('e');putc('p');
+//   asd                     putc(13);putc('S');putc('l');putc('e');putc('e');putc('p');
                         Delay_ms(2);
                         SLEEP();
                     }
