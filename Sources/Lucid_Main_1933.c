@@ -119,7 +119,7 @@ void Main(void)
                     if( SleepDelayFlagMask == ( u16ByteFlags2 & SleepDelayFlagMask) )
                     {
                         u8SleepCountL++;
-                        if(5 <= u8SleepCountL)
+                        if(10 <= u8SleepCountL)
                         {
                             u16ByteFlags2 &= ~SleepDelayFlagMask;
                             u8SleepCountL = 0;

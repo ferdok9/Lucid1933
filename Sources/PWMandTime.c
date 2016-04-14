@@ -90,9 +90,9 @@ void Timer0_Init(void)
 void I2C_Reade_Triger_Init(void)
 {
 //  PORTB0
-//  Interupt happens in every 1s
+//  Interupt happens in every 0.5s
     IOCBP |= RTCInterruptPIN; //IOCBP: INTERRUPT-ON-CHANGE POSITIVE EDGE REGISTER
-//    IOCBN |= RTCInterruptPIN; //IOCBN: INTERRUPT-ON-CHANGE NEGATIVE EDGE REGISTER
+    IOCBN |= RTCInterruptPIN; //IOCBN: INTERRUPT-ON-CHANGE NEGATIVE EDGE REGISTER
     
 //WakeUp on RS232
 //    IOCBN |= UARTInterruptPIN; //IOCBN: INTERRUPT-ON-CHANGE NEGATIVE EDGE REGISTER

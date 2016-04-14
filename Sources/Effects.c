@@ -88,9 +88,9 @@ void NextLed(uint8 u8CurLEDP)
     uint8 u8NextLEDL = 0;
     uint8 u8TempXthBit = 0;
     
-    if(0 != u8IncLEDFlag)
+    if(0 != u8IncLEDFlag)//uvelichava li se nomera na LED-a ili namaliava
     {
-        if( 5 == u8CurLEDP )
+        if( MaxLED == u8CurLEDP )
         {
             u8IncLEDFlag = 0;
             u8NextLEDL = MaxLED - 1;

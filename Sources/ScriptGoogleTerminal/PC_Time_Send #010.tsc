@@ -5,8 +5,8 @@
 //******************************
 program test;
 begin
-    writeln(#013 + #010 + GetTimeStr() + #013 + #010);
-    ComSendstr(#013 + #010 + GetTimeStr() + #013 + #010);
+    writeln(#013 + #010 + GetTimeStr() + #013 + #008);
+    ComSendstr(#013 + #010 + GetTimeStr() + #013 + #008);
 //    Delay(100);
     writeln('End');
 end.
