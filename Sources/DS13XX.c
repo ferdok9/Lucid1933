@@ -68,7 +68,7 @@ void DecodeInitPrintClock_3by(char * cMsgClockP)
    void DS_Init_Clock_3by(uint8 u8FlagInitP, uint8 *pDataP)
 {
 
-    uint8 u8SecL=59;
+    uint8 u8SecL=52;
     uint8 u8MinL=59;
     uint8 u8HourL=23;
 
@@ -84,6 +84,36 @@ void DecodeInitPrintClock_3by(char * cMsgClockP)
     DS_Write(0,&u8SecL,1);
     DS_Write(1,&u8MinL,1);
     DS_Write(2,&u8HourL,1);
+}
+   ////////////////////////////////////////////////////////////////////////////////
+void DS_Init_3by(void)
+{
+    uint8 u8WaitForComunicationL=0;
+    uint8 u8Data[3]= {23,59,52};
+
+    DS_Power_Pin_TRIS = 0;//B0 enable communication power of DS1338
+    DS_Power_Pin = 1;//outputs B0 is high to power DS1338
+    Delay_ms(10);
+    do
+    {
+        u8WaitForComunicationL = DS_Write_Test(1,0b00000100);
+        Delay_ms(100);
+    }while(0 == u8WaitForComunicationL);
+
+    DS_Init_Clock_3by(1,u8Data);
+    DS_Init_OutClock_3by();
+}
+////////////////////////////////////////////////////////////////////////////////
+void DS_Init_OutClock_3by(void)
+{
+    uint8 u8ClockOutL = 0;
+
+    DS_Reade_Pointer(0, &u8ClockOutL, 1);
+    u8ClockOutL &= (~0b10000000);// the oscillator is enabled
+    DS_Write(0,&u8ClockOutL,1);
+
+    u8ClockOutL = 0b00010000;//1 Hz output
+    DS_Write(7,&u8ClockOutL,1);
 }
 ////////////////////////////////////////////////////////////////////////////////
 void SetSnoozeDelay_3by(char * cMsgClockP)
@@ -118,9 +148,6 @@ void SetInitialDelay_3by(char * cMsgClockP)
 ////////////////////////////////////////////////////////////////////////////////
 void AddTimeToAlarm_3by(void)
 {
-    uint8 u8AlarmTempL[7];
-    uint8 u8SnoozeDelayTempL[7];
-    
     putc(13);
     putc('O');putc('l');putc('d');putc('A');putc('l');putc('a');
     putc('r');putc('m');
@@ -132,13 +159,62 @@ void AddTimeToAlarm_3by(void)
     DS_Print_Clock_3by(u8SnoozeDelay, 0);
     putc(10);putc(13);
             
-//    DigitsToInt ( u8Alarm, u8AlarmTempL );
-//    DigitsToInt ( u8SnoozeDelay, u8SnoozeDelayTempL );
-
     AddTimeToClock( u8Alarm, u8SnoozeDelay );
-//    IntToDigits ( u8AlarmTempL, u8Alarm);
 
     putc('N');putc('e');putc('w');
     putc('A');putc('l');putc('a');putc('r');putc('m');
     DS_Print_Clock_3by(u8Alarm, 1);
 }
+////////////////////////////////////////////////////////////////////////////////
+void DS_Task_Reade_Time_3by(void)
+{
+    uint8 DataL[16];
+    u16TaskTimeCounterL++;
+//    printf("\n\r%Lu",u16TaskTimeCounterL);
+    if(1 == u16TaskTimeCounterL)
+    {
+        DS_Read_Clock_3by(DataL);
+        if( DebugPrintFlagMask == ( u8StaicByteFlags & DebugPrintFlagMask ) )
+        {
+            putc(13);
+            putc('C');putc('l');putc('o');putc('c');putc('k');
+            putc(' ');putc(' ');putc(' ');putc(' ');putc(' ');
+            putc('A');putc('l');putc('a');putc('r');putc('m');
+            
+            DS_Print_Clock_3by(DataL,1);
+            putc(' ');putc(' ');
+            DS_Print_Clock_3by(u8Alarm,0);
+            putc(10);putc(13);
+        }
+        Menage_Alarma_3by(&DataL[0]);
+
+        u16TaskTimeCounterL=0;
+    }
+}
+////////////////////////////////////////////////////////////////////////////////
+void Menage_Alarma_3by(uint8 *pDataP)
+{
+    uint8 u8IsAlarmTimeL = 0;
+//    DS_Read_Clock(pDataP);
+    u8IsAlarmTimeL = Comppare_Time_3by( pDataP, u8Alarm );
+
+    if(1 == u8IsAlarmTimeL)
+    {
+        u8Moove[5] = 1;
+        u1StartFlagGlowAltL = 1;
+        u8StaicByteFlags &= ~SleepFlagMask;
+    }
+}
+////////////////////////////////////////////////////////////////////////////////
+uint8 Comppare_Time_3by(uint8 *pDataP, uint8 *pAlarmP)
+{
+    uint8 u8ReturnL = 0;
+    if( (pDataP[MasSec] == pAlarmP[MasSec]) &&
+        (pDataP[MasMin] == pAlarmP[MasMin]) &&
+        (pDataP[MasHour] == pAlarmP[MasHour]))
+    {
+        u8ReturnL = 1;
+    }
+    return u8ReturnL;
+}
+////////////////////////////////////////////////////////////////////////////////

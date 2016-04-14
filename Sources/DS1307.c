@@ -445,7 +445,8 @@ void DS_Write(uint8 u8AddresP, uint8 *pDataP, uint8 u8NumberOfBytesP)
     }
 
     i2c_stop();         // Restart
-}///////////////////////////////////////////////////////////////////////////////
+}
+///////////////////////////////////////////////////////////////////////////////
 uint8 DS_Reade_Pointer(uint8 u8AddresP, uint8 *pDataP, uint8 u8NumberOfBytesP)
 {
     uint8 u8ByteCountL=1;

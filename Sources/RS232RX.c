@@ -14,7 +14,7 @@ volatile char cMsgClock[MsgClockLengh];
 
 unsigned int8 u8StateMashine = 0;
 unsigned int8 u8MsgCount = 0;
-
+uint8 u8SleepCountL = 0;
 //#013#010kotarak#013#010
 //#013#01013:04:00#013#010
 //#013#01018\07\15#013#010
@@ -23,6 +23,7 @@ void  RDA_isr(void)
 {
     char c;
     c = fgetc();
+    u8SleepCountL = 0;
 //    fputc(c);
    switch(u8StateMashine)
    {
@@ -136,7 +137,7 @@ void  RDA_isr(void)
                     u8StateMashine = 0;
                     TMR0IE = 1;
                     u8StaicByteFlags &= ~SleepFlagMask;
-                    
+//                    TBD set SleepFlagMasks
                     u1StartFlagGlowAltL = 1;
                     
                     u8Moove[5] = 1;

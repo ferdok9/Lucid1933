@@ -26,12 +26,11 @@ void Main_Init(void)
     PEIE = 1;       //Peripheral Interrupt Enable bit
     GIE = 1;        //enable_interrupts(GLOBAL);
     
-    DS_Init();
+    DS_Init_3by();
 }
 
 void Main(void)
 {
-    uint8 u8SleepCountL = 0;
     uint8 u8ClockL[7];
     Main_Init();
 
@@ -87,21 +86,23 @@ void Main(void)
             {
                 if((':' == cMsgClock[5]) && (':' == cMsgClock[2]))
                 {
-                    putc(13);putc('C');putc('l');putc('o');putc('c');putc('k');
-                             putc('S');putc('e');putc('t');
+                    putc(13);
+                    putc('C');putc('l');putc('o');putc('c');putc('k');
+                    putc('S');putc('e');putc('t');
                     IOCIE = 0;// Interrupt-on-Change Enable bit
                     DS_Power_Pin = 1;
                     
                     Delay_ms(2);
-                    DecodeInitPrintClock_3by(cMsgClock);
                     
-                    Delay_ms(200);
+                    putc(13);putc('O');putc('l');putc('d');  
                     DS_Read_Clock_3by(u8ClockL);
-                    
-                    DS_Power_Pin = 0;
-                    
                     DS_Print_Clock_3by(u8ClockL,1);
                     
+                    putc(13);putc('N');putc('e');putc('w');                   
+                    DecodeInitPrintClock_3by(cMsgClock);
+                    
+                    DS_Power_Pin = 0;
+
                     IOCIE = 1;// Interrupt-on-Change Enable bit
                 }                
                 u16ByteFlags &= ~SetClockFlagMask;
@@ -113,15 +114,16 @@ void Main(void)
                 {
                     DS_Power_Pin = 1;
                     Delay_ms(2);
-                    DS_Task();
+                    DS_Task_Reade_Time_3by();
                     
                     if( SleepDelayFlagMask == ( u16ByteFlags2 & SleepDelayFlagMask) )
                     {
                         u8SleepCountL++;
-                        if(5 < u8SleepCountL)
+                        if(5 <= u8SleepCountL)
                         {
                             u16ByteFlags2 &= ~SleepDelayFlagMask;
                             u8SleepCountL = 0;
+                            putc(13);putc('S');putc('l');putc('e');putc('e');putc('p');
                         }
                     }
                     else
@@ -131,7 +133,6 @@ void Main(void)
                         DS_Power_Pin = 0;
                         StartWakeUpFromUART();
                         u16ByteFlags &= ~OneSecondTaskFlagMask;
-//                        putc(13);putc('S');putc('l');putc('e');putc('e');putc('p');
                         Delay_ms(2);
                         SLEEP();
                     }
@@ -139,7 +140,7 @@ void Main(void)
                 else
                 {
                     DS_Power_Pin = 1;
-                    DS_Task();
+                    DS_Task_Reade_Time_3by();
                 }
                 u16ByteFlags &= ~OneSecondTaskFlagMask;
             }
