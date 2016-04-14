@@ -106,7 +106,7 @@ unsigned int8 u8SnoozeDelay[6] = {5,9,5,9,2,3};
 
 unsigned int16 u16ByteFlags = 0;
 unsigned int16 u16ByteFlags2 = 0;
-unsigned int8 u8StaicByteFlags = (SleepFlagMask || DebugPrintFlagMask);
+unsigned int8 u8StaicByteFlags = (SleepFlagMask | DebugPrintFlagMask);
 
 #define TenSec      0
 #define Sec         1
