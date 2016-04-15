@@ -14,6 +14,37 @@
 #define MasHour        0
 #define MasMin         1
 #define MasSec         2
+
+#define TenSec      0
+#define Sec         1
+#define TenMin      2
+#define Min         3
+#define TenHour     4
+#define Hour        5
+
+#define Sec_Mask             0b00001111
+#define TenSec_Mask          0b01110000
+#define Min_Mask             0b00001111
+#define TenMin_Mask          0b01110000
+#define Hour_Mask            0b00001111
+#define TenHour_Mask         0b00110000
+
+#define Day_Mask             0b00000111
+#define Date_Mask            0b00001111
+#define TenDate_Mask         0b00110000
+#define Month_Mask           0b00001111
+#define TenMonth_Mask        0b00010000
+#define Year_Mask            0b00001111
+#define TenYear_Mask         0b11110000
+
+#define Monday      1
+#define Tuesday     2
+#define Wednesday   3
+#define Thursday    4
+#define Friday      5
+#define Saturday    6
+#define Sunday      7
+
 ////////////////////////////////////////////////////////////////////////////////
 void TestClockInputs(uint8 *pDataP);
 #ifndef DS

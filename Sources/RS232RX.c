@@ -1,5 +1,5 @@
 #include <Effects.h>
-#include <DS1307.h>
+#include <DS13XX.h>
 #include <PWMandTime.h>
 
 #define MsgClockLengh 28

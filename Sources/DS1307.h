@@ -22,6 +22,7 @@
 #define     SetClockFlagMask            0x0020    //0b00000000 00100000
 #define     OneSecondTaskFlagMask       0x0040    //0b00000000 01000000
 #define     ReadeClockFlagMask          0x0080    //0b00000000 10000000
+
 //u16ByteFlags2
 #define     SleepDelayFlagMask          0x0001    //0b00000001 00000000
 
@@ -37,7 +38,11 @@
 #Bit    DS_Power_Pin        =   PORTC.5
 
 void ds1307_write_test(unsigned char rtcreg, unsigned int8 rtc_data);
+
 uint8 DS_Write_Test(unsigned char rtcreg, unsigned int8 rtc_data);
+uint8 DS_Reade_Pointer(uint8 u8AddresP, uint8 *pDataP, uint8 u8NumberOfBytesP);
+void DS_Write(uint8 u8AddresP, uint8 *pDataP, uint8 u8NumberOfBytesP);
+void DS_Read(uint8 u8AddresP, uint8 *pDataP, uint8 u8NumberOfBytesP);
 
 void min_inc(void);
 void hour_inc(void);
@@ -55,9 +60,6 @@ void DS_Read_Data(uint8 *pDataP);
 void DS_Print_Clock(uint8 *pDataP);
 void DS_Print_Data(uint8 *pDataP);
 
-void DS_Write(uint8 u8AddresP, uint8 *pDataP, uint8 u8NumberOfBytesP);
-void DS_Read(uint8 u8AddresP, uint8 *pDataP, uint8 u8NumberOfBytesP);
-
 void DS_String_To_Massiv_Clock(uint8 * u8ClockSetP, char * cMsgClock);
 void DS_String_To_Massiv_Data(uint8 * u8DateSetP, char * cMsgClock);
 
@@ -66,8 +68,6 @@ void SetInitialDelay(char * cMsgClockP);
 
 void DecodeClock(char * cMsgClock);
 void DecodeData(char * cMsgClock);
-
-uint8 DS_Reade_Pointer(uint8 u8AddresP, uint8 *pDataP, uint8 u8NumberOfBytesP);
 
 uint8 Comppare_Time(uint8 *pDataP, uint8 *pAlarmP);
 //uint8 Check_Sequences(uint8 *pDataP);

@@ -4,7 +4,7 @@
 #include "Lucid_Main_1933.h"
 
 #include "RS232RX.c"
-#include "DS1307.c"
+//#include "DS1307.c"
 #include "DS13XX.c"
 #include "PWMandTime.c"
 #include "Effects.c"

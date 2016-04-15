@@ -1,7 +1,8 @@
 
+#include "DS13XX_Low_level_com.c"
 #include "DS13XX.h"
-#include "DS1307.h"
-#include "ClockCalculationTransformation.h"
+//#include "DS1307.h"
+#include "ClockCalculationTransformation.c"
 
 //3by - 3 bytes
 //is in format {23,59,59}
