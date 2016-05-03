@@ -114,6 +114,10 @@ void DS_Init_OutClock_3by(void)
     DS_Write(0,&u8ClockOutL,1);
 
     u8ClockOutL = 0b00010000;//1 Hz output
+//    u8ClockOutL = 0b00010001;//4.096  kHz output
+//    u8ClockOutL = 0b00010010;//8.192  kHz output
+//    u8ClockOutL = 0b00010011;//32.768 kHz output
+    
     DS_Write(7,&u8ClockOutL,1);
 }
 ////////////////////////////////////////////////////////////////////////////////
