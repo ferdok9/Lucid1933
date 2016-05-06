@@ -73,7 +73,7 @@ void  RDA_isr(void)
                     cMsgClock[u8MsgCount] = 0;
                     u8StateMashine = 0;
                     
-                    u16ByteFlags |= SetInitialDelayFlagMask;
+                    u8ByteFlags |= SetInitialDelayFlagMask;
                     break;
                     
                 case 7:// set NapDelay
@@ -83,7 +83,7 @@ void  RDA_isr(void)
                     cMsgClock[u8MsgCount] = 0;
                     u8StateMashine = 0;
                     
-                    u16ByteFlags |= SetSnoozeDelayFlagMask;
+                    u8ByteFlags |= SetSnoozeDelayFlagMask;
                     break;
                     
                 case 8:// Alarm Test
@@ -92,7 +92,7 @@ void  RDA_isr(void)
                     cMsgClock[u8MsgCount] = 0;
                     u8StateMashine = 0;
                     
-                    u16ByteFlags |= AddSnoozeDelayFlagMask;
+                    u8ByteFlags |= AddSnoozeDelayFlagMask;
                     break;
                     
                 case 9:// RESTART
@@ -109,7 +109,7 @@ void  RDA_isr(void)
                     cMsgClock[u8MsgCount] = 0;
                     u8StateMashine = 0;
                     
-                    u16ByteFlags |= SetClockFlagMask;
+                    u8ByteFlags |= SetClockFlagMask;
                     break;
 
                 case 11:// set ALARM
@@ -118,7 +118,7 @@ void  RDA_isr(void)
                     cMsgClock[u8MsgCount] = 0;
                     u8StateMashine = 0;
                     
-                    u16ByteFlags |= SetAlarmFlagMask;
+                    u8ByteFlags |= SetAlarmFlagMask;
                     break;
 
                 case 12:// Reade Clock
@@ -127,7 +127,7 @@ void  RDA_isr(void)
                     cMsgClock[u8MsgCount] = 0;
                     u8StateMashine = 0;
                     
-                    u16ByteFlags |= ReadeClockFlagMask;
+                    u8ByteFlags |= ReadeClockFlagMask;
                     break;
 
                 case 13:// effect
@@ -192,6 +192,15 @@ void  RDA_isr(void)
                         IOCIE = 0;// Interrupt-on-Change Enable bit
                     }
                     break; 
+                    
+                case 17:// Reade Alarm
+                    //#013#010X#013#017
+                    
+                    cMsgClock[u8MsgCount] = 0;
+                    u8StateMashine = 0;
+                    
+                    u8ByteFlags2 |= ReadeAlarmFlagMask;
+                    break;
                     
                 default:
                     u8StateMashine = 0;

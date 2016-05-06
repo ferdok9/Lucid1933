@@ -9,7 +9,7 @@ void Timer0_Interrupt(void)
     TMR0=116;
     //255-116=139
     
-    u16ByteFlags |= EffectIncrementFlagMask;
+    u8ByteFlags |= EffectIncrementFlagMask;
 
     if(u8PWMCounter <= PWMDC[Right][PWM1])
     {
@@ -118,7 +118,7 @@ void Interrupt_on_Change_ISR(void)
     
     if(RTCInterruptPIN == (IOCBF & RTCInterruptPIN))//1s interupt reade clock
     {
-        u16ByteFlags |= OneSecondTaskFlagMask;
+        u8ByteFlags |= OneSecondTaskFlagMask;
         IOCBF &= ~RTCInterruptPIN; // INTERRUPT-ON-CHANGE FLAG REGISTER
     }
     if(UARTInterruptPIN == (IOCBF & UARTInterruptPIN))//UART
@@ -133,7 +133,7 @@ void Interrupt_on_Change_ISR(void)
 
         IOCBF &= ~UARTInterruptPIN; // INTERRUPT-ON-CHANGE FLAG REGISTER
 		StopWakeUpFromUART();
-        u16ByteFlags2 |= SleepDelayFlagMask;
+        u8ByteFlags2 |= SleepDelayFlagMask;
         
 //        putc('A');
     }
