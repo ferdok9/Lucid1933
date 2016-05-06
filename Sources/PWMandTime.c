@@ -10,8 +10,6 @@ void Timer0_Interrupt(void)
     //255-116=139
     
     u8ByteFlags |= EffectIncrementFlagMask;
-
-
 }
 ////////////////////////////////////////////////////////////////////////////////
 void PWM_Incrementation(void)
@@ -165,13 +163,13 @@ void LEDInit(void)
     L_PWM2TRIS = 0;
     L_PWM3TRIS = 0;
 
-    R_PWM1 = 1;
-    R_PWM2 = 1;
-    R_PWM3 = 1;
+    R_PWM1 = 0;
+    R_PWM2 = 0;
+    R_PWM3 = 0;
 
-    L_PWM1 = 1;
-    L_PWM2 = 1;
-    L_PWM3 = 1;
-    
+    L_PWM1 = 0;
+    L_PWM2 = 0;
+    L_PWM3 = 0;
+    PWM_Incrementation();
 }
 ////////////////////////////////////////////////////////////////////////////////
