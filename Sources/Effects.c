@@ -17,18 +17,6 @@ void Effects_Task(void)
     }
 }
 ////////////////////////////////////////////////////////////////////////////////
-void Rotate_Left_Incrementation_Mask(void)
-{
-    if(0 == (u8IncMaskFlag & 0b11100000))
-    {
-        u8IncMaskFlag <<= 1;
-    }
-    else
-    {
-        u8IncMaskFlag = 0b00000001;
-    }
-}
-////////////////////////////////////////////////////////////////////////////////
 void Set_Xth_Bit(uint8 *u8ByteP, uint8 u8XthBitP)
 {
     *u8ByteP = 0b00000001;
@@ -43,7 +31,7 @@ void Glow_Alt(void)
     uint8 u8CurLEDL=0;
     
     for(u8CurLEDL=0;u8CurLEDL<6;u8CurLEDL++)
-    {        
+    {
         if(0 != u8Moove[u8CurLEDL])
         {
             Set_Xth_Bit(&u8IncMaskFlag, u8CurLEDL);
@@ -117,6 +105,18 @@ void NextLed(uint8 u8CurLEDP)
     Set_Xth_Bit(&u8TempXthBit, u8NextLEDL);
     u8IncPWMFlag |= u8TempXthBit;
 }
+void Rotate_Left_Incrementation_Mask(void)
+{
+    if(0 == (u8IncMaskFlag & 0b11100000))
+    {
+        u8IncMaskFlag <<= 1;
+    }
+    else
+    {
+        u8IncMaskFlag = 0b00000001;
+    }
+}
+////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 //void Sweep_Left(void)
 //{

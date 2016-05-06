@@ -60,6 +60,7 @@ void PWM_Init(void);
 
 void StartWakeUpFromUART(void);
 void StopWakeUpFromUART(void);
+void PWM_Incrementation(void);
 
 unsigned int8 PWMDC[2][3] = {{ 0, 0, 0 },{ 0, 0, 0 }};
 unsigned int8 u8PWMCounter = 0;

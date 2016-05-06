@@ -62,6 +62,7 @@ void Main(void)
             
             if( EffectIncrementFlagMask == ( u8ByteFlags & EffectIncrementFlagMask ) )
             {
+                PWM_Incrementation();
                 Effects_Task();
                 u8ByteFlags &= ~EffectIncrementFlagMask;
             } 

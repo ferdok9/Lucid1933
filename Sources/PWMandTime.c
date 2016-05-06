@@ -11,6 +11,11 @@ void Timer0_Interrupt(void)
     
     u8ByteFlags |= EffectIncrementFlagMask;
 
+
+}
+////////////////////////////////////////////////////////////////////////////////
+void PWM_Incrementation(void)
+{
     if(u8PWMCounter <= PWMDC[Right][PWM1])
     {
         R_PWM1 = 1;
