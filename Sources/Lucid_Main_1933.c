@@ -36,40 +36,47 @@ void Main(void)
 
     while(TRUE)
     {
-        if( (0 != u16ByteFlags) || (0 != u8StaicByteFlags) )
+        if( (0 != u8ByteFlags)  || (0 != u8ByteFlags2) || (0 != u8StaicByteFlags) )
         {
-            if( SetSnoozeDelayFlagMask == ( u16ByteFlags & SetSnoozeDelayFlagMask ) )
+            if( SetSnoozeDelayFlagMask == ( u8ByteFlags & SetSnoozeDelayFlagMask ) )
             {
                 SetSnoozeDelay_3by(cMsgClock);
-                u16ByteFlags &= ~SetSnoozeDelayFlagMask;
+                u8ByteFlags &= ~SetSnoozeDelayFlagMask;
             }
 
-            if( SetInitialDelayFlagMask == ( u16ByteFlags & SetInitialDelayFlagMask ) )
+            if( SetInitialDelayFlagMask == ( u8ByteFlags & SetInitialDelayFlagMask ) )
             {
                 SetInitialDelay_3by(cMsgClock);
-                u16ByteFlags &= ~SetInitialDelayFlagMask;
+                u8ByteFlags &= ~SetInitialDelayFlagMask;
             }
 
-            if( EffectIncrementFlagMask == ( u16ByteFlags & EffectIncrementFlagMask ) )
+            if( EffectIncrementFlagMask == ( u8ByteFlags & EffectIncrementFlagMask ) )
             {
                 Effects_Task();
-                u16ByteFlags &= ~EffectIncrementFlagMask;
+                u8ByteFlags &= ~EffectIncrementFlagMask;
             } 
 
-            if( AddSnoozeDelayFlagMask == ( u16ByteFlags & AddSnoozeDelayFlagMask ) )
+            if( AddSnoozeDelayFlagMask == ( u8ByteFlags & AddSnoozeDelayFlagMask ) )
             {
                 AddTimeToAlarm_3by();
-                u16ByteFlags &= ~AddSnoozeDelayFlagMask;
+                u8ByteFlags &= ~AddSnoozeDelayFlagMask;
             }
             
-            if( SetAlarmFlagMask == ( u16ByteFlags & SetAlarmFlagMask ) )
+            if( SetAlarmFlagMask == ( u8ByteFlags & SetAlarmFlagMask ) )
             {
                 DS_String_To_Massiv_Clock_3by(u8Alarm,cMsgClock);
                 DS_Print_Clock_3by(u8Alarm,1);
-                u16ByteFlags &= ~SetAlarmFlagMask;
+                u8ByteFlags &= ~SetAlarmFlagMask;
             }
-
-            if( ReadeClockFlagMask == ( u16ByteFlags & ReadeClockFlagMask ) )
+            
+            if( ReadeAlarmFlagMask == ( u8ByteFlags2 & ReadeAlarmFlagMask ) )
+            {
+                putc(13);putc('R');putc('A');putc('l');putc('a');putc('r');putc('m');
+                DS_Print_Clock_3by(&u8Alarm,1);
+                u8ByteFlags2 &= ~ReadeAlarmFlagMask;
+            }
+            
+            if( ReadeClockFlagMask == ( u8ByteFlags & ReadeClockFlagMask ) )
             {
                 putc(13);putc('R');putc('e');putc('a');putc('d');putc('e');
                 putc('C');putc('l');putc('o');putc('c');putc('k');
@@ -79,10 +86,10 @@ void Main(void)
                 DS_Power_Pin = 0;
                 
                 DS_Print_Clock_3by(u8ClockL,1);  
-                u16ByteFlags &= ~ReadeClockFlagMask;
+                u8ByteFlags &= ~ReadeClockFlagMask;
             }
                     
-            if( SetClockFlagMask == ( u16ByteFlags & SetClockFlagMask ) )
+            if( SetClockFlagMask == ( u8ByteFlags & SetClockFlagMask ) )
             {
                 if((':' == cMsgClock[5]) && (':' == cMsgClock[2]))
                 {
@@ -105,23 +112,25 @@ void Main(void)
 
                     IOCIE = 1;// Interrupt-on-Change Enable bit
                 }                
-                u16ByteFlags &= ~SetClockFlagMask;
+                u8ByteFlags &= ~SetClockFlagMask;
             }
-            if( OneSecondTaskFlagMask == ( u16ByteFlags & OneSecondTaskFlagMask ) )
+            if( OneSecondTaskFlagMask == ( u8ByteFlags & OneSecondTaskFlagMask ) )
             {
 //                putc(13);putc('D');putc('S');putc('_');putc('T');putc('a');putc('s');putc('k');
+                //After receiving of any character the MCU will be awake
+                //for 5s(10 rising edge of PIN0 of portB ) 
                 if( SleepFlagMask == ( u8StaicByteFlags & SleepFlagMask ) )
                 {
                     DS_Power_Pin = 1;
                     Delay_ms(2);
                     DS_Task_Reade_Time_3by();
                     
-                    if( SleepDelayFlagMask == ( u16ByteFlags2 & SleepDelayFlagMask) )
+                    if( SleepDelayFlagMask == ( u8ByteFlags2 & SleepDelayFlagMask) )
                     {
                         u8SleepCountL++;
                         if(10 <= u8SleepCountL)
                         {
-                            u16ByteFlags2 &= ~SleepDelayFlagMask;
+                            u8ByteFlags2 &= ~SleepDelayFlagMask;
                             u8SleepCountL = 0;
                             putc(13);putc('S');putc('l');putc('e');putc('e');putc('p');
                         }
@@ -132,7 +141,7 @@ void Main(void)
 //                        TBD 2 ms?
                         DS_Power_Pin = 0;
                         StartWakeUpFromUART();
-                        u16ByteFlags &= ~OneSecondTaskFlagMask;
+                        u8ByteFlags &= ~OneSecondTaskFlagMask;
                         Delay_ms(2);
                         SLEEP();
                     }
@@ -142,7 +151,7 @@ void Main(void)
                     DS_Power_Pin = 1;
                     DS_Task_Reade_Time_3by();
                 }
-                u16ByteFlags &= ~OneSecondTaskFlagMask;
+                u8ByteFlags &= ~OneSecondTaskFlagMask;
             }
         }
     }
