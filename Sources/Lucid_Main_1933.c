@@ -49,7 +49,17 @@ void Main(void)
                 SetInitialDelay_3by(cMsgClock);
                 u8ByteFlags &= ~SetInitialDelayFlagMask;
             }
-
+            
+            if( AddInitialDelayFlagMask == ( u8ByteFlags2 & AddInitialDelayFlagMask ) )
+            {
+                putc(13);putc('O');putc('l');putc('d');
+                DS_Print_Clock_3by(u8Alarm,1);
+                putc(13);putc('N');putc('e');putc('w');
+                
+                DS_Init_Alarm_3by();
+                u8ByteFlags2 &= ~AddInitialDelayFlagMask;
+            }
+            
             if( EffectIncrementFlagMask == ( u8ByteFlags & EffectIncrementFlagMask ) )
             {
                 Effects_Task();

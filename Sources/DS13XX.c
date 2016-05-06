@@ -86,7 +86,7 @@ void DecodeInitPrintClock_3by(char * cMsgClockP)
     DS_Write(1,&u8MinL,1);
     DS_Write(2,&u8HourL,1);
 }
-   ////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 void DS_Init_3by(void)
 {
     uint8 u8WaitForComunicationL=0;
@@ -103,6 +103,25 @@ void DS_Init_3by(void)
 
     DS_Init_Clock_3by(1,u8Data);
     DS_Init_OutClock_3by();
+}
+////////////////////////////////////////////////////////////////////////////////
+void DS_Init_Alarm_3by(void)
+{
+    uint8 u8Data[3]= {23,59,52};
+    uint8 u8ForCountL=0;
+    
+    DS_Power_Pin_TRIS = 0;//B0 enable communication power of DS1338
+    DS_Power_Pin = 1;     //outputs B0 is high to power DS1338
+    Delay_ms(10);
+    DS_Read_Clock_3by(u8Data);
+    DS_Print_Clock_3by(u8Data,1);
+    
+    AddTimeToClock( u8Data, u8InitialDelay );
+    
+    for(u8ForCountL = 0; 3 > u8ForCountL; u8ForCountL++)
+    {
+        u8Alarm[u8ForCountL] = u8Data[u8ForCountL];
+    }
 }
 ////////////////////////////////////////////////////////////////////////////////
 void DS_Init_OutClock_3by(void)

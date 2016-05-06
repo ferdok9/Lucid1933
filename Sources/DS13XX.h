@@ -27,6 +27,8 @@
 /*          StaticFlags       */
 #define     DebugPrintFlagMask          0x01    //0b00000001
 #define     SleepFlagMask               0x02    //0b00000010
+#define     AddInitialDelayFlagMask     0x04    //0b00000100
+
 //TBD
 #define     DebugPrintClock     0x01
 
@@ -53,6 +55,7 @@ void DS_Read_Clock_3by(uint8 *pDataP);
 void DS_String_To_Massiv_Clock_3by(uint8 * u8ClockSetP, char * cMsgClockP);
 void DS_Init_Clock_3by(uint8 u8FlagInitP, uint8 *pDataP);
 void DS_Init_3by(void);
+void DS_Init_Alarm_3by(void);
 void DS_Init_OutClock_3by(void);
 void DecodeInitPrintClock_3by(char * cMsgClockP);
 

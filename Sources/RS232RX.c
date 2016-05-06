@@ -195,11 +195,16 @@ void  RDA_isr(void)
                     
                 case 17:// Reade Alarm
                     //#013#010X#013#017
-                    
                     cMsgClock[u8MsgCount] = 0;
                     u8StateMashine = 0;
-                    
                     u8ByteFlags2 |= ReadeAlarmFlagMask;
+                    break;
+                    
+                case 18:// Init Alarm
+                    //#013#010X#013#018
+                    cMsgClock[u8MsgCount] = 0;
+                    u8StateMashine = 0;
+                    u8ByteFlags2 |= AddInitialDelayFlagMask;
                     break;
                     
                 default:
