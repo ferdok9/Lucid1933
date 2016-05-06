@@ -137,10 +137,10 @@ void  RDA_isr(void)
                     u8StateMashine = 0;
                     TMR0IE = 1;
                     u8StaicByteFlags &= ~SleepFlagMask;
-//                    TBD set SleepFlagMasks
+//                    TBD set SleepFlagMasks and TIMER
                     u1StartFlagGlowAltL = 1;
+                    u8Moove[0] = 1;
                     
-                    u8Moove[5] = 1;
                     break;
 
                 case 14:// Debug Print

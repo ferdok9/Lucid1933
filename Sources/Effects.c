@@ -110,6 +110,9 @@ void NextLed(uint8 u8CurLEDP)
     else
     {
         u8Duty[u8NextLEDL] = 0;
+//      TBD set SleepFlagMasks
+        u8StaicByteFlags |= SleepFlagMask;  
+
     }
 }
 ////////////////////////////////////////////////////////////////////////////////
