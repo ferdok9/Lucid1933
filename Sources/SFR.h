@@ -48,6 +48,7 @@
 #Byte    ADRESH    =    0x09C
 #Byte    ADCON0    =    0x09D
 #Byte    ADCON1    =    0x09E
+#Byte    LATA    =    0x10C
 #Byte    LATB    =    0x10D
 #Byte    LATC    =    0x10E
 #Byte    CM1CON0    =    0x111
@@ -169,6 +170,15 @@
 #Bit    TRISB5      =   TRISB.5
 #Bit    TRISB6      =   TRISB.6
 #Bit    TRISB7      =   TRISB.7
+
+#Bit    LATA0      =   LATA.0
+#Bit    LATA1      =   LATA.1
+#Bit    LATA2      =   LATA.2
+#Bit    LATA3      =   LATA.3
+#Bit    LATA4      =   LATA.4
+#Bit    LATA5      =   LATA.5
+#Bit    LATA6      =   LATA.6
+#Bit    LATA7      =   LATA.7
 
 #Bit    GIE         =   INTCON.7
 #Bit    PEIE        =   INTCON.6

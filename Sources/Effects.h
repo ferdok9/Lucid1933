@@ -3,7 +3,7 @@
 #define	EFFECT
 
 #define	MaxLED 5
-#define MaxPWM 32
+#define MaxPWM 255
 
 int8 u8IncMaskFlag = 0;
 

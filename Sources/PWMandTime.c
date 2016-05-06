@@ -6,9 +6,9 @@ void Timer0_Interrupt(void)
 {
 //    unsigned int8 u8LeftLEDL=0;
 //after tests TMR is set to this number
-//and it is equal to 400 Hz
-    TMR0=116;
-    //255-116=139
+//and it is equal to 100us (5kHz)
+    TMR0=70;
+    //255-70=185
     
     u8ByteFlags |= EffectIncrementFlagMask;
 }
@@ -77,18 +77,19 @@ void PWM_Incrementation(void)
 ////////////////////////////////////////////////////////////////////////////////
 void Timer0_Init(void)
 {
+//TIMER0
+//Oscilator = 1/(16MHz/4) = 250ns
+//Prescaler is 1 : 2    
+//
 //tick is 500 ns
-//TIMER0 = 156
-//(500*10^-9 * 139) = 69.5 * 10^-6
-//1 / (69.5 * 10-6 * 32) = 449.64 Hz
-    
+//TIMER0 = 70
+//(500*10^-9 * 185) = 92.5 * 10^-6
+//1 / (92.5 * 10-6 * 32) = 449.64 Hz
     //TIMER0
     //Prescaler is 1 : 2,
     //((16MHz/4)/2)
     OPTION_REG &= ~(0b10111111);
-//    OPTION_REG |=   0b01000000;
     TMR0IE = 1;     //enable_interrupts(INT_TIMER0);
-//    GIE = 1;        //enable_interrupts(GLOBAL);
 }
 ////////////////////////////////////////////////////////////////////////////////
 void I2C_Reade_Triger_Init(void)

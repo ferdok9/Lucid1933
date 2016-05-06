@@ -33,13 +33,21 @@
 #define PWM2    (1)
 #define PWM3    (2)
 
-#define R_PWM1    PORTA3
-#define R_PWM2    PORTA1
-#define R_PWM3    PORTA2
+//#define R_PWM1    PORTA3
+//#define R_PWM2    PORTA1
+//#define R_PWM3    PORTA2
+//
+//#define L_PWM1    PORTA7
+//#define L_PWM2    PORTA6
+//#define L_PWM3    PORTA5
 
-#define L_PWM1    PORTA7
-#define L_PWM2    PORTA6
-#define L_PWM3    PORTA5
+#define R_PWM1    LATA3
+#define R_PWM2    LATA1
+#define R_PWM3    LATA2
+
+#define L_PWM1    LATA7
+#define L_PWM2    LATA6
+#define L_PWM3    LATA5
 
 #define R_PWM1TRIS    TRISA1//ok
 #define R_PWM2TRIS    TRISA2

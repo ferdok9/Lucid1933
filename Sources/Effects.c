@@ -5,7 +5,7 @@
 void Effects_Task(void)
 {
     u16EffectCounterL++;
-    if(250 == u16EffectCounterL)
+    if(32 == u16EffectCounterL)
     {
         u16EffectCounterL=0;
         if(1 == u1StartFlagGlowAltL)
@@ -91,9 +91,9 @@ void NextLed(uint8 u8CurLEDP)
     {
         if( 0 == u8CurLEDP )
         {
-            u8IncLEDFlag = 1;//THIS IS THE EDN
+            u8IncLEDFlag = 1;
             u8NextLEDL = 1;
-            u8EndOfGlowL = 1;
+//            u8EndOfGlowL = 1;//THIS IS THE EDN
         }
         else
         {
