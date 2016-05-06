@@ -42,7 +42,11 @@ unsigned int8 u8Alarm[6] = {23,59,59,59,0,0};
 unsigned int8 u8InitialDelay[6] = {0,0,3,0,0,4};
 
 unsigned int8 u8SnoozeDelay[6] = {0,5,0,9,2,3};
-
+//unsigned int8 u8Alarm[6] = {23,59,59,59,0,0};
+//
+//unsigned int8 u8InitialDelay[6] = {0,0,3,0,0,4};
+//
+//unsigned int8 u8SnoozeDelay[6] = {0,5,0,9,2,3};
 unsigned int16 u16ByteFlags = 0;
 unsigned int16 u16ByteFlags2 = 0;
 unsigned int8 u8StaicByteFlags = (SleepFlagMask );//| DebugPrintFlagMask
