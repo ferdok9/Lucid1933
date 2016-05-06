@@ -1,4 +1,5 @@
 #include <PWMandTime.h>
+#include "Effects.h"
 
 #INT_TIMER0
 void Timer0_Interrupt(void)
@@ -67,7 +68,7 @@ void PWM_Incrementation(void)
     }
 ///////////////////
 
-    if(u8PWMCounter >= 32)
+    if(u8PWMCounter >= MaxPWM)
     {
         u8PWMCounter = 0;
     }
@@ -163,13 +164,13 @@ void LEDInit(void)
     L_PWM2TRIS = 0;
     L_PWM3TRIS = 0;
 
-    R_PWM1 = 0;
-    R_PWM2 = 0;
-    R_PWM3 = 0;
+    R_PWM1 = 1;
+    R_PWM2 = 1;
+    R_PWM3 = 1;
 
-    L_PWM1 = 0;
-    L_PWM2 = 0;
-    L_PWM3 = 0;
+    L_PWM1 = 1;
+    L_PWM2 = 1;
+    L_PWM3 = 1;
     PWM_Incrementation();
 }
 ////////////////////////////////////////////////////////////////////////////////

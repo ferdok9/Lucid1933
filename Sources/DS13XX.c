@@ -225,8 +225,10 @@ void Menage_Alarma_3by(uint8 *pDataP)
     if(1 == u8IsAlarmTimeL)
     {
         AddTimeToClock( u8Alarm, u8SnoozeDelay );
-        u8Moove[5] = 1;
+        
+        u8Moove[0] = 1;
         u1StartFlagGlowAltL = 1;
+        
         u8StaicByteFlags &= ~SleepFlagMask;
     }
 }

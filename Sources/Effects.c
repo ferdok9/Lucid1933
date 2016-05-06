@@ -1,8 +1,6 @@
 
 #include <Effects.h>
 
-
-#define MaxPWM 32
 ////////////////////////////////////////////////////////////////////////////////
 void Effects_Task(void)
 {
@@ -39,7 +37,7 @@ void Glow_Alt(void)
             {                                                  //zapylvane uvelichaca li se ili namaliava
                 if(MaxPWM <= u8Duty[u8CurLEDL])
                 {
-                    u8IncPWMFlag &= (~u8IncMaskFlag);
+                    u8IncPWMFlag &= (~u8IncMaskFlag);//PWM-a zapochva da namaliava
                     NextLed(u8CurLEDL);
                 }
                 else
@@ -51,9 +49,9 @@ void Glow_Alt(void)
             {
                 if(0 == u8Duty[u8CurLEDL])
                 {
-                    u8Moove[u8CurLEDL] -= 1;
-                    u8IncPWMFlag |= u8IncMaskFlag;
-                }
+                    u8Moove[u8CurLEDL] -= 1;//Flaga za dvijenie se nulira
+                    u8IncPWMFlag |= u8IncMaskFlag;//Flaga za uvelichavane/namaliavane 
+                }                                 //se slaga otnovo na uvelichvane
                 else
                 {
                     u8Duty[u8CurLEDL] -= 1;
@@ -65,9 +63,9 @@ void Glow_Alt(void)
     PWMDC[Right][PWM1] = u8Duty[0];
     PWMDC[Right][PWM2] = u8Duty[1];
     PWMDC[Right][PWM3] = u8Duty[2];
-    PWMDC[Left][PWM1] = u8Duty[3];
-    PWMDC[Left][PWM2] = u8Duty[4];
-    PWMDC[Left][PWM3] = u8Duty[5];
+    PWMDC[Left][PWM1]  = u8Duty[3];
+    PWMDC[Left][PWM2]  = u8Duty[4];
+    PWMDC[Left][PWM3]  = u8Duty[5];
 
 }
 ////////////////////////////////////////////////////////////////////////////////
@@ -75,6 +73,7 @@ void NextLed(uint8 u8CurLEDP)
 {
     uint8 u8NextLEDL = 0;
     uint8 u8TempXthBit = 0;
+    uint8 u8EndOfGlowL = 0;
     
     if(0 != u8IncLEDFlag)//uvelichava li se nomera na LED-a ili namaliava
     {
@@ -92,18 +91,26 @@ void NextLed(uint8 u8CurLEDP)
     {
         if( 0 == u8CurLEDP )
         {
-            u8IncLEDFlag = 1;
+            u8IncLEDFlag = 1;//THIS IS THE EDN
             u8NextLEDL = 1;
+            u8EndOfGlowL = 1;
         }
         else
         {
             u8NextLEDL = u8CurLEDP - 1;
         }
     }
-    u8Moove[u8NextLEDL] = 1;
-    u8Duty[u8NextLEDL] = 0;
-    Set_Xth_Bit(&u8TempXthBit, u8NextLEDL);
-    u8IncPWMFlag |= u8TempXthBit;
+    if(0 == u8EndOfGlowL)
+    {
+        u8Moove[u8NextLEDL] = 1;
+        u8Duty[u8NextLEDL] = 0;
+        Set_Xth_Bit(&u8TempXthBit, u8NextLEDL);
+        u8IncPWMFlag |= u8TempXthBit;
+    }
+    else
+    {
+        u8Duty[u8NextLEDL] = 0;
+    }
 }
 ////////////////////////////////////////////////////////////////////////////////
 void Rotate_Left_Incrementation_Mask(void)
