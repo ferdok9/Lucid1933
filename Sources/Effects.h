@@ -19,15 +19,14 @@ int8 u8IncLEDFlag = 1;
 //int1 u1Increment6L = 1;
 
 uint8 u8Moove[6] = { 0, 0, 0, 0, 0, 0 };
-//uint8 u8Moove[6] = { 0, 0, 0, 0, 0, 0 };
 
 uint8 u8Duty[6] = { 0, 0, 0, 0, 0, 0 };
 
-//int1 u1StartFlag1L = 0;
-int1 u1StartFlagGlowAltL = 0;
-//     int1 u1StartFlag2L = 1;
-//     int1 u1StartFlag3L = 1;
+uint8 u8MaxPWMCoef[10] =     {255,230,204,179,153,129,102,77,51,26};
+uint8 u8EffeCountCoef[10] = {19,21,23,25,27,39,30,32,99,195};
+uint8 u8Coeficient = 8;
 
+int1 u1StartFlagGlowAltL = 0;
 
 unsigned int16 u16EffectCounterL = 0;
 

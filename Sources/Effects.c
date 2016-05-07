@@ -5,8 +5,10 @@
 void Effects_Task(void)
 {
     u16EffectCounterL++;
-    if(32 == u16EffectCounterL)
-    {
+    if((u8EffeCountCoef[u8Coeficient]) == u16EffectCounterL)//whit u16EffectCounterL = 19 
+                               //MaxPWM 255 and TIMER0 = 100us
+                              //from min PWM to min PWM is 997ms
+    {    
         u16EffectCounterL=0;
         if(1 == u1StartFlagGlowAltL)
         {
@@ -35,7 +37,7 @@ void Glow_Alt(void)
             Set_Xth_Bit(&u8IncMaskFlag, u8CurLEDL);
             if(u8IncMaskFlag == (u8IncPWMFlag & u8IncMaskFlag))//proveriava se koeficienta na
             {                                                  //zapylvane uvelichaca li se ili namaliava
-                if(MaxPWM <= u8Duty[u8CurLEDL])
+                if(u8MaxPWMCoef[u8Coeficient] <= u8Duty[u8CurLEDL])
                 {
                     u8IncPWMFlag &= (~u8IncMaskFlag);//PWM-a zapochva da namaliava
                     NextLed(u8CurLEDL);

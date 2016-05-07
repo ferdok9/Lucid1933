@@ -69,7 +69,7 @@ void DecodeInitPrintClock_3by(char * cMsgClockP)
    void DS_Init_Clock_3by(uint8 u8FlagInitP, uint8 *pDataP)
 {
 
-    uint8 u8SecL=52;
+    uint8 u8SecL=57;
     uint8 u8MinL=59;
     uint8 u8HourL=23;
 

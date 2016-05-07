@@ -9,7 +9,7 @@
 #include "SFR.h"
 ////////////////////////////////////////////////////////////////////////////////
 #device ADC=16 //ICD=TRUE
-#device ICD=TRUE
+//#device ICD=TRUE
 
 #FUSES NOWDT                    //No Watch Dog Timer
 #FUSES NOPUT                    //No Power Up Timer
