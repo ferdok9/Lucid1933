@@ -1,6 +1,7 @@
 #include <Effects.h>
 #include <DS13XX.h>
 #include <PWMandTime.h>
+#include "Effects.h"
 
 #define MsgClockLengh 28
 
@@ -12,9 +13,9 @@ uint8 SurchForDelimiter(char * cMsgClock);
 
 volatile char cMsgClock[MsgClockLengh];
 
-unsigned int8 u8StateMashine = 0;
-unsigned int8 u8MsgCount = 0;
-uint8 u8SleepCountL = 0;
+uint8_t u8StateMashine = 0;
+uint8_t u8MsgCount = 0;
+uint8_t u8SleepCountL = 0;
 //#013#010kotarak#013#010
 //#013#01013:04:00#013#010
 //#013#01018\07\15#013#010
@@ -200,11 +201,32 @@ void  RDA_isr(void)
                     u8ByteFlags2 |= ReadeAlarmFlagMask;
                     break;
                     
-                case 18:// Init Alarm
+                case 18:// AddInitialDelay
                     //#013#010X#013#018
                     cMsgClock[u8MsgCount] = 0;
                     u8StateMashine = 0;
                     u8ByteFlags2 |= AddInitialDelayFlagMask;
+                    break;
+                    
+                case 19:// Init u8Coeficient
+                    //#013#010X#013#019
+                    cMsgClock[u8MsgCount] = 0;
+                    u8StateMashine = 0;
+                    u8Coeficient = (cMsgClock[0] ^ '0');                    
+                    break;
+                    
+                case 20:// Init u8MaxPWMCoef
+                    //#013#010X#013#020
+                    cMsgClock[u8MsgCount] = 0;
+                    u8StateMashine = 0;
+                    u8MaxPWMCoef[u8Coeficient] = (uint8_t)get_3ascii(cMsgClock);
+                    break;
+                    
+                case 21:// Init u8EffeCountCoef
+                    //#013#010X#013#021
+                    cMsgClock[u8MsgCount] = 0;
+                    u8StateMashine = 0;
+                    u8EffeCountCoef[u8Coeficient] = (uint8_t)get_3ascii(cMsgClock);
                     break;
                     
                 default:
@@ -215,4 +237,38 @@ void  RDA_isr(void)
    }
 }
 //////////////////////////////////////////////////////////////////
+uint8_t get_ascii(uint8_t * p) 
+{
+   return ((*p) ^ '0');
+}
+//////////////////////////////////////////////////////////////////
+uint8_t hex_to_ascii(uint8_t ch) 
+{
+   if (ch < 10) return '0' + ch;
+   if (ch < 16) return 'A' - 10 + ch;
+   return '?';
+}
+//////////////////////////////////////////////////////////////////
+uint8_t get_2ascii(uint8_t * p) 
+{
+    uint8_t tmp, tmpl;
 
+  tmp = get_ascii(p);
+  if (tmp > 9) return 0xFF;
+  p++;
+  tmpl = get_ascii(p);
+  if (tmpl > 9) return 0xFF;
+  return tmpl + tmp*10;
+}
+//////////////////////////////////////////////////////////////////
+uint16_t get_3ascii(uint8_t * p) 
+{
+  uint16_t tmp, tmp1;
+
+  tmp = get_2ascii(p);
+  if (tmp == 0xFF) return 0xFFFF;
+  p += 2;
+  tmp1 = get_ascii(p);
+  if (tmp1 > 9) return 0xFFFF;
+  return tmp1 + tmp*10;
+}
