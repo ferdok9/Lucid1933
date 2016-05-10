@@ -95,7 +95,7 @@ void NextLed(uint8 u8CurLEDP)
         {
             u8IncLEDFlag = 1;
             u8NextLEDL = 1;
-//            u8EndOfGlowL = 1;//THIS IS THE EDN
+            u8EndOfGlowL = 1;//THIS IS THE EDN
         }
         else
         {
@@ -114,7 +114,8 @@ void NextLed(uint8 u8CurLEDP)
         u8Duty[u8NextLEDL] = 0;
 //      TBD set SleepFlagMasks
         u8StaicByteFlags |= SleepFlagMask;  
-
+        u8ByteFlags2 |= SleepDelayFlagMask;
+        u8SleepCountL = 0;
     }
 }
 ////////////////////////////////////////////////////////////////////////////////
@@ -128,6 +129,12 @@ void Rotate_Left_Incrementation_Mask(void)
     {
         u8IncMaskFlag = 0b00000001;
     }
+}
+void Initial_Effect(void)
+{
+    u8Moove[0] = 1;
+    u1StartFlagGlowAltL = 1;
+    u8StaicByteFlags &= ~SleepFlagMask;
 }
 ////////////////////////////////////////////////////////////////////////////////
 //void Sweep_Left(void)

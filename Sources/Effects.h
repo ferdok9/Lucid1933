@@ -39,6 +39,7 @@ void Rotate_Left_Incrementation_Mask(void);
 void Set_Xth_Bit(uint8_t *u8ByteP, uint8_t u8XthBitP);
 void Disable_Port(void);
 void NextLed(uint8_t u8CurLEDP);
+void Initial_Effect(void); 
 
 uint8_t get_ascii(uint8_t * p);
 uint8_t hex_to_ascii(uint8_t ch);

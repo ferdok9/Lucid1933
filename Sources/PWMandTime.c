@@ -7,9 +7,29 @@ void Timer0_Interrupt(void)
 //    unsigned int8 u8LeftLEDL=0;
 //after tests TMR is set to this number
 //and it is equal to 100us (5kHz)
-    TMR0=70;
+    TMR0=155;
     //255-70=185
-    
+//        if(R_PWM1 == 0)
+//    {
+//        R_PWM1 = 1;
+//    }
+//    else
+//    {
+//        R_PWM1 = 0;
+//    }
+//        if(u8PWMCounter <= PWMDC[Right][PWM1])
+//    {
+//        R_PWM1 = 1;
+//    }
+//    else
+//    {
+//        R_PWM1 = 0;
+//    }
+//    if(u8PWMCounter >= MaxPWM)
+//    {
+//        u8PWMCounter = 0;
+//    }
+//    u8PWMCounter++;
     u8ByteFlags |= EffectIncrementFlagMask;
 }
 ////////////////////////////////////////////////////////////////////////////////
@@ -88,7 +108,7 @@ void Timer0_Init(void)
     //TIMER0
     //Prescaler is 1 : 2,
     //((16MHz/4)/2)
-    OPTION_REG &= ~(0b10111111);
+    OPTION_REG &= ~(0b10110111);
     TMR0IE = 1;     //enable_interrupts(INT_TIMER0);
 }
 ////////////////////////////////////////////////////////////////////////////////
@@ -165,13 +185,20 @@ void LEDInit(void)
     L_PWM2TRIS = 0;
     L_PWM3TRIS = 0;
 
-    R_PWM1 = 1;
-    R_PWM2 = 1;
-    R_PWM3 = 1;
+//    R_PWM1 = 1;
+//    R_PWM2 = 1;
+//    R_PWM3 = 1;
+//
+//    L_PWM1 = 1;
+//    L_PWM2 = 1;
+//    L_PWM3 = 1;
+    R_PWM1 = 0;
+    R_PWM2 = 0;
+    R_PWM3 = 0;
 
-    L_PWM1 = 1;
-    L_PWM2 = 1;
-    L_PWM3 = 1;
+    L_PWM1 = 0;
+    L_PWM2 = 0;
+    L_PWM3 = 0;
     PWM_Incrementation();
 }
 ////////////////////////////////////////////////////////////////////////////////
