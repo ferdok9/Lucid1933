@@ -5,14 +5,27 @@
 void Effects_Task(void)
 {
     u16EffectCounterL++;
-    if((u8EffeCountCoef[u8Coeficient]) == u16EffectCounterL)//whit u16EffectCounterL = 19 
+    if((u8EffeCountCoef[u8Coeficient]) == u16EffectCounterL)//whit u16EffectCounterL = 19 u8EffeCountCoef[u8Coeficient])
                                //MaxPWM 255 and TIMER0 = 100us
                               //from min PWM to min PWM is 997ms
     {    
         u16EffectCounterL=0;
-        if(1 == u1StartFlagGlowAltL)
+        if( GlowAltLFlagMask == ( u8EffectFlags & GlowAltLFlagMask ))
         {
             Glow_Alt();//Sweep_Left();//
+        }
+        if( AltBlinkFlagMask == ( u8EffectFlags & AltBlinkFlagMask ))
+        {
+            Alt_Blink();//Sweep_Left();//
+        }
+        if( ZeroingFlagsFlagMask == ( u8EffectFlags & ZeroingFlagsFlagMask ))
+        {
+            u8EffectFlags = 0;
+            BlinkCount = 0;
+    //      TBD set SleepFlagMasks
+            u8StaicByteFlags |= SleepFlagMask;  
+            u8ByteFlags2 |= SleepDelayFlagMask;
+            u8SleepCountL = 0;
         }
     }
 }
@@ -53,7 +66,13 @@ void Glow_Alt(void)
                 {
                     u8Moove[u8CurLEDL] -= 1;//Flaga za dvijenie se nulira
                     u8IncPWMFlag |= u8IncMaskFlag;//Flaga za uvelichavane/namaliavane 
-                }                                 //se slaga otnovo na uvelichvane
+                                                  //se slaga otnovo na uvelichvane
+                    if((1 == u8EndOfGlowL) & (MinLED == u8CurLEDL))
+                    {
+                        u8EndOfGlowL = 0;
+                        u8EffectFlags |= ZeroingFlagsFlagMask;
+                    }
+                }                                 
                 else
                 {
                     u8Duty[u8CurLEDL] -= 1;
@@ -75,8 +94,7 @@ void NextLed(uint8 u8CurLEDP)
 {
     uint8 u8NextLEDL = 0;
     uint8 u8TempXthBit = 0;
-    uint8 u8EndOfGlowL = 0;
-    
+
     if(0 != u8IncLEDFlag)//uvelichava li se nomera na LED-a ili namaliava
     {
         if( MaxLED == u8CurLEDP )
@@ -112,10 +130,6 @@ void NextLed(uint8 u8CurLEDP)
     else
     {
         u8Duty[u8NextLEDL] = 0;
-//      TBD set SleepFlagMasks
-        u8StaicByteFlags |= SleepFlagMask;  
-        u8ByteFlags2 |= SleepDelayFlagMask;
-        u8SleepCountL = 0;
     }
 }
 ////////////////////////////////////////////////////////////////////////////////
@@ -130,11 +144,85 @@ void Rotate_Left_Incrementation_Mask(void)
         u8IncMaskFlag = 0b00000001;
     }
 }
+////////////////////////////////////////////////////////////////////////////////
 void Initial_Effect(void)
 {
     u8Moove[0] = 1;
-    u1StartFlagGlowAltL = 1;
+	u8EffectFlags |= GlowAltLFlagMask;
+//    u1StartFlagGlowAltL = 1;
     u8StaicByteFlags &= ~SleepFlagMask;
+}
+////////////////////////////////////////////////////////////////////////////////
+void Alt_Blink(void)
+{
+    u16AltBlinkTimeCounter++;
+    if(100 <= u16AltBlinkTimeCounter)
+    {
+        u16AltBlinkTimeCounter = 0;
+        switch(BlinkCount)
+        {
+            case 0:        
+                PWMDC[Right][PWM1] = MaxPWM;
+                PWMDC[Right][PWM3] = MaxPWM;
+
+                PWMDC[Left][PWM1]  = MaxPWM;
+                PWMDC[Left][PWM3]  = MaxPWM;
+                break;
+            case 1:        
+                PWMDC[Right][PWM1] = 0;
+                PWMDC[Right][PWM3] = 0;
+
+                PWMDC[Left][PWM1]  = 0;
+                PWMDC[Left][PWM3]  = 0;
+                break;
+            case 2:        
+                PWMDC[Right][PWM1] = MaxPWM;
+                PWMDC[Right][PWM3] = MaxPWM;
+
+                PWMDC[Left][PWM1]  = MaxPWM;
+                PWMDC[Left][PWM3]  = MaxPWM;
+                break;
+            case 3:        
+                PWMDC[Right][PWM1] = 0;
+                PWMDC[Right][PWM3] = 0;
+
+                PWMDC[Left][PWM1]  = 0;
+                PWMDC[Left][PWM3]  = 0;
+                break;
+
+            case 4:        
+                PWMDC[Right][PWM2] = MaxPWM;
+                PWMDC[Left][PWM2]  = MaxPWM;
+                break;
+
+            case 5:        
+                PWMDC[Right][PWM2] = 0;
+                PWMDC[Left][PWM2]  = 0;
+                break;
+
+            case 6:        
+                PWMDC[Right][PWM2] = MaxPWM;
+                PWMDC[Left][PWM2]  = MaxPWM;
+                break;
+
+            case 7:        
+                PWMDC[Right][PWM2] = 0;
+                PWMDC[Left][PWM2]  = 0;
+                BlinkCount = 0;
+                if(1 <= u8AltBlinkRepeetCounter)
+                {
+                    u8EffectFlags |= ZeroingFlagsFlagMask;
+                    u8AltBlinkRepeetCounter = 0;
+                }
+                else
+                {
+                    u8AltBlinkRepeetCounter++;
+                }
+                return;
+                break;
+        }
+        BlinkCount++;
+    }
 }
 ////////////////////////////////////////////////////////////////////////////////
 //void Sweep_Left(void)

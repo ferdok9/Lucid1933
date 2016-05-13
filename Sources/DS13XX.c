@@ -90,7 +90,7 @@ void DecodeInitPrintClock_3by(char * cMsgClockP)
 void DS_Init_3by(void)
 {
     uint8 u8WaitForComunicationL=0;
-    uint8 u8Data[3]= {23,59,45};
+    uint8 u8Data[3]= {23,59,55};
 
     DS_Power_Pin_TRIS = 0;//B0 enable communication power of DS1338
     DS_Power_Pin = 1;//outputs B0 is high to power DS1338
@@ -219,18 +219,35 @@ void DS_Task_Reade_Time_3by(void)
 void Menage_Alarma_3by(uint8 *pDataP)
 {
     uint8 u8IsAlarmTimeL = 0;
+    uint8 u8IsAlarmTime2L = 0;
+//unsigned int8 u8Temp[3] = {00,00,10};
+//unsigned int8 u8Temp2[3] = {00,00,10};
+
 //    DS_Read_Clock(pDataP);
     u8IsAlarmTimeL = Comppare_Time_3by( pDataP, u8Alarm );
-
+//    u8IsAlarmTime2L= Comppare_Time_3by( pDataP, u8SecEfctAlarm );
+    
     if(1 == u8IsAlarmTimeL)
     {
         AddTimeToClock( u8Alarm, u8SnoozeDelay );
+//        u8Temp2[0] = u8Alarm[0];
+//        u8Temp2[1] = u8Alarm[1];
+//        u8Temp2[2] = u8Alarm[2];
+//        AddTimeToClock( u8Temp2, u8Temp );
+//        u8SecEfctAlarm[0] = u8Temp2[0];
+//        u8SecEfctAlarm[1] = u8Temp2[1];
+//        u8SecEfctAlarm[2] = u8Temp2[2];
+//        AddTimeToClock( u8SecEfctAlarm, u8Temp );
         
         u8Moove[0] = 1;
-        u1StartFlagGlowAltL = 1;
-        
+		u8EffectFlags |= GlowAltLFlagMask;        
         u8StaicByteFlags &= ~SleepFlagMask;
     }
+//    if(1 == u8IsAlarmTime2L)
+//    {
+//        u8EffectFlags |= AltBlinkFlagMask;
+//        u8StaicByteFlags &= ~SleepFlagMask;
+//    }
 }
 ////////////////////////////////////////////////////////////////////////////////
 uint8 Comppare_Time_3by(uint8 *pDataP, uint8 *pAlarmP)

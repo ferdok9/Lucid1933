@@ -202,3 +202,42 @@ void LEDInit(void)
     PWM_Incrementation();
 }
 ////////////////////////////////////////////////////////////////////////////////
+void Blink(void)
+{
+    R_PWM1 = 1;
+    R_PWM2 = 1;
+    R_PWM3 = 1;
+
+    L_PWM1 = 1;
+    L_PWM2 = 1;
+    L_PWM3 = 1;
+    Delay_ms(200);
+    
+    R_PWM1 = 0;
+    R_PWM2 = 0;
+    R_PWM3 = 0;
+
+    L_PWM1 = 0;
+    L_PWM2 = 0;
+    L_PWM3 = 0;
+    Delay_ms(200);
+    
+    R_PWM1 = 1;
+    R_PWM2 = 1;
+    R_PWM3 = 1;
+
+    L_PWM1 = 1;
+    L_PWM2 = 1;
+    L_PWM3 = 1;
+    Delay_ms(200);
+    
+    R_PWM1 = 0;
+    R_PWM2 = 0;
+    R_PWM3 = 0;
+
+    L_PWM1 = 0;
+    L_PWM2 = 0;
+    L_PWM3 = 0;
+
+}
+////////////////////////////////////////////////////////////////////////////////

@@ -1,6 +1,8 @@
 #ifndef DS13XX
 #define	DS13XX
 
+#include "stdint.h"
+
 //==============================================================================
 // MACROS
 //==============================================================================
@@ -40,9 +42,10 @@
 //==============================================================================
 unsigned int16 u16TaskTimeCounterL = 0;
 
- unsigned int8 u8Alarm[3] = {23,59,59};
- unsigned int8 u8InitialDelay[3] = {0,0,5};
- unsigned int8 u8SnoozeDelay[3] = {0,0,15};
+unsigned int8 u8Alarm[3] = {23,59,59};
+unsigned int8 u8SecEfctAlarm[3] = {1,00,00};
+unsigned int8 u8InitialDelay[3] = {4,0,5};
+unsigned int8 u8SnoozeDelay[3] = {0,2,15};
  
 unsigned int8 u8ByteFlags = 0;
 unsigned int8 u8ByteFlags2 = 0;

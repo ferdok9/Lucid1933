@@ -29,7 +29,7 @@ void Main_Init(void)
     DS_Init_3by();
     DS_Init_Alarm_3by();
 //    TBD 
-//    Initial_Effect();
+    Blink();
 
 }
 
@@ -37,6 +37,7 @@ void Main(void)
 {
     uint8 u8ClockL[7];
     Main_Init();
+        
 //PWMDC[0][0] = 26;
     while(TRUE)
     {

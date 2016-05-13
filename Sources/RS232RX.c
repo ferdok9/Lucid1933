@@ -139,7 +139,8 @@ void  RDA_isr(void)
                     TMR0IE = 1;
                     u8StaicByteFlags &= ~SleepFlagMask;
 //                    TBD set SleepFlagMasks and TIMER
-                    u1StartFlagGlowAltL = 1;
+//					u8EffectFlags |= GlowAltLFlagMask;
+                    u8EffectFlags |= AltBlinkFlagMask;
                     u8Moove[0] = 1;
                     
                     break;
