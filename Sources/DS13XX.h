@@ -30,6 +30,7 @@
 #define     DebugPrintFlagMask          0x01    //0b00000001
 #define     SleepFlagMask               0x02    //0b00000010
 #define     AddInitialDelayFlagMask     0x04    //0b00000100
+#define     InitialDelayIsSetFlagMask   0x08    //0b00001000
 
 //TBD
 #define     DebugPrintClock     0x01
@@ -42,11 +43,13 @@
 //==============================================================================
 unsigned int16 u16TaskTimeCounterL = 0;
 
-unsigned int8 u8Alarm[3] = {23,59,59};
-unsigned int8 u8SecEfctAlarm[3] = {1,00,00};
-unsigned int8 u8InitialDelay[3] = {4,0,5};
-unsigned int8 u8SnoozeDelay[3] = {0,2,15};
- 
+unsigned int8 u8Alarm[3] = {0,0,3};
+unsigned int8 u8SecEfctAlarm[3] = {0,0,15};
+
+unsigned int8 u8InitialDelay[3] = {3,59,57};
+unsigned int8 u8SnoozeDelay[3] = {0,2,30};
+unsigned int8 u8SecEfctDelay[3] = {0,0,15};
+
 unsigned int8 u8ByteFlags = 0;
 unsigned int8 u8ByteFlags2 = 0;
 unsigned int8 u8StaicByteFlags = (SleepFlagMask );//SleepFlagMask | DebugPrintFlagMask

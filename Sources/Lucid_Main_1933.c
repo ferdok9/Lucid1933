@@ -27,8 +27,7 @@ void Main_Init(void)
     GIE = 1;        //enable_interrupts(GLOBAL);
     
     DS_Init_3by();
-    DS_Init_Alarm_3by();
-//    TBD 
+
     Blink();
 
 }
@@ -37,8 +36,7 @@ void Main(void)
 {
     uint8 u8ClockL[7];
     Main_Init();
-        
-//PWMDC[0][0] = 26;
+    
     while(TRUE)
     {
         if( (0 != u8ByteFlags)  || (0 != u8ByteFlags2) || (0 != u8StaicByteFlags) )
