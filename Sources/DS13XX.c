@@ -3,7 +3,7 @@
 #include "DS13XX.h"
 //#include "DS1307.h"
 #include "ClockCalculationTransformation.c"
-
+#include "RTC_Soft.h"
 //3by - 3 bytes
 //is in format {23,59,59}
 
@@ -80,8 +80,9 @@ void DS_Init_Clock_3by(uint8 u8FlagInitP, uint8 *pDataP)
         u8HourL = ((( pDataP[MasHour] / 10 ) << 4 ) & TenHour_Mask ) | (( pDataP[MasHour] % 10 ));
     }
     
-    u8SecL &= (~0b10000000);// the oscillator is enabled
-
+//    u8SecL &= (~0b10000000);// the oscillator is enabled
+    u8SecL |= ( 0b10000000);// the oscillator is disabled
+    
     DS_Write(0,&u8SecL,1);
     DS_Write(1,&u8MinL,1);
     DS_Write(2,&u8HourL,1);
@@ -192,6 +193,7 @@ void AddTimeToAlarm_3by(void)
 ////////////////////////////////////////////////////////////////////////////////
 void DS_Task_Reade_Time_3by(void)
 {
+    uint8 TempL = 0;
     uint8 DataL[16];
     u16TaskTimeCounterL++;
 //    printf("\n\r%Lu",u16TaskTimeCounterL);
@@ -209,6 +211,11 @@ void DS_Task_Reade_Time_3by(void)
             putc(' ');putc(' ');
             DS_Print_Clock_3by(u8Alarm,0);
             putc(10);putc(13);
+            RTC_Print_Clock(rtcc, 0);
+            putc(10);putc(13);
+            TempL = DataL[MasSec] - rtcc.time.RTCseconds;
+            putc((TempL / 10) + 48);
+            putc((TempL % 10) + 48);
         }
         Menage_Alarma_3by(&DataL[0]);
 

@@ -30,7 +30,8 @@ uint8_t u8MaxPWMCoef[10] =     {255,231,205,180,154,129,102,77,51,26};
 uint8_t u8EffeCountCoef[10] = {19,21,25,28,32,39,50,66,99,195};
 uint8_t u8Coeficient = 0;
 uint8_t BlinkCount = 0;
-int1 u1StartFlagGlowAltL = 0;
+//TBD
+//int1 u1StartFlagGlowAltL = 0;
 uint8_t u8EndOfGlowL = 0;
 uint8_t u8EffectFlags = 0;
 

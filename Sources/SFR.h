@@ -115,7 +115,7 @@
 #Byte	 WPUB 	=   0x20D
 
 #Byte    INDF1    =    0x401
-//
+
 #Byte    PCLATH    =    0x40A
 #Byte    TMR4    =    0x415
 #Byte    PR4    =    0x416
@@ -180,14 +180,34 @@
 #Bit    LATA6      =   LATA.6
 #Bit    LATA7      =   LATA.7
 
+#Bit    LATB0      =   LATB.0
+#Bit    LATB1      =   LATB.1
+#Bit    LATB2      =   LATB.2
+#Bit    LATB3      =   LATB.3
+#Bit    LATB4      =   LATB.4
+#Bit    LATB5      =   LATB.5
+#Bit    LATB6      =   LATB.6
+#Bit    LATB7      =   LATB.7
+
 #Bit    GIE         =   INTCON.7
 #Bit    PEIE        =   INTCON.6
 #Bit    TMR0IE      =   INTCON.5
 #Bit    IOCIE       =   INTCON.3//Interrupt-on-Change Enable bit
 #Bit    TMR1IE      =   PIE1.0
+#Bit    TMR1IF      =   PIR1.0
 #Bit    RCIE        =   PIE1.5
 #Bit    CCP4IE      =   PIE3.5
 #Bit    TMR2IF      =   PIR1.1
 #Bit    RCIF        =   PIR1.5
+
+#Bit    TMR1CS1      =   T1CON.7//Timer1 Clock Source Select bits
+#Bit    TMR1CS0      =   T1CON.6
+#Bit    T1CKPS1      =   T1CON.5//Timer1 Input Clock Prescale Select bits
+#Bit    T1CKPS0      =   T1CON.4
+#Bit    T1OSCEN      =   T1CON.3//LP Oscillator Enable Control bit
+#Bit    T1SYNC       =   T1CON.2//Timer1 External Clock Input Synchronization Control bit
+#Bit    TMR1ON       =   T1CON.0//Timer1 On bit
+
+#Bit    SSP1IE       =   PIE1.3
 
 #endif SFRh

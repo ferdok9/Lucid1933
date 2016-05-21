@@ -52,7 +52,7 @@ unsigned int8 u8SecEfctDelay[3] = {0,0,15};
 
 unsigned int8 u8ByteFlags = 0;
 unsigned int8 u8ByteFlags2 = 0;
-unsigned int8 u8StaicByteFlags = (SleepFlagMask );//SleepFlagMask | DebugPrintFlagMask
+unsigned int8 u8StaicByteFlags = (SleepFlagMask);//SleepFlagMask | DebugPrintFlagMask
 //==============================================================================
 // FUNCTIONS
 //==============================================================================

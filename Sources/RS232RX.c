@@ -69,8 +69,7 @@ void  RDA_isr(void)
             {
                 case 6:// set InitialDelay
                     //#013#01023:59:56#013#07
-                    putc(13);putc('I');putc('n');putc('i');putc('t');
-                    putc('D');putc('e');putc('l');putc('a');putc('y');
+
                     cMsgClock[u8MsgCount] = 0;
                     u8StateMashine = 0;
                     
@@ -79,8 +78,7 @@ void  RDA_isr(void)
                     
                 case 7:// set NapDelay
                     //#013#01023:59:56#013#07
-                    putc(13);putc('s');putc('n');putc('o');putc('o');
-                    putc('z');putc('e');
+
                     cMsgClock[u8MsgCount] = 0;
                     u8StateMashine = 0;
                     
@@ -89,7 +87,6 @@ void  RDA_isr(void)
                     
                 case 8:// Alarm Test
                     //#013#010X#013#08
-//                    putc(13);putc('A');putc('L');putc('A');putc('R');putc('M');putc('T');putc('E');
                     cMsgClock[u8MsgCount] = 0;
                     u8StateMashine = 0;
                     
@@ -115,7 +112,7 @@ void  RDA_isr(void)
 
                 case 11:// set ALARM
                     //#013#01023:59:56#013#011
-                    putc(13);putc('A');putc('l');putc('a');putc('r');putc('m');
+                    
                     cMsgClock[u8MsgCount] = 0;
                     u8StateMashine = 0;
                     

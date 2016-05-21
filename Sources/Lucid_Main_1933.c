@@ -8,6 +8,7 @@
 #include "DS13XX.c"
 #include "PWMandTime.c"
 #include "Effects.c"
+#include "RTC_Soft.c"
 
 void Main_Init(void)
 {
@@ -15,19 +16,21 @@ void Main_Init(void)
     Delay_ms(200);
     
     putc(13);putc('S');putc('t');putc('a');putc('r');putc('t');
-    
+
     I2C_Reade_Triger_Init();
     Timer0_Init();
+    Timer1_Init();
     LEDInit();
-    
+        
     RCIF = 0;       //Clear USART Receive Interrupt Flag bit
     RCIE = 1;       // Enables the USART receive interrupt  //enable_interrupts(INT_RDA);//
-    
+    RTC_INT_Ena();
     PEIE = 1;       //Peripheral Interrupt Enable bit
     GIE = 1;        //enable_interrupts(GLOBAL);
-    
-    DS_Init_3by();
 
+    DS_Init_3by();
+    Timer1_On();    
+    
     Blink();
 
 }
@@ -43,12 +46,15 @@ void Main(void)
         {
             if( SetSnoozeDelayFlagMask == ( u8ByteFlags & SetSnoozeDelayFlagMask ) )
             {
+//                putc(13);putc('S');putc('n');putc('o');putc('o');putc('z');putc('e');                
                 SetSnoozeDelay_3by(cMsgClock);
                 u8ByteFlags &= ~SetSnoozeDelayFlagMask;
             }
 
             if( SetInitialDelayFlagMask == ( u8ByteFlags & SetInitialDelayFlagMask ) )
             {
+//                putc(13);putc('I');putc('n');putc('i');putc('t');
+//                putc('D');putc('e');putc('l');putc('a');putc('y');
                 SetInitialDelay_3by(cMsgClock);
                 u8ByteFlags &= ~SetInitialDelayFlagMask;
             }
@@ -72,12 +78,14 @@ void Main(void)
 
             if( AddSnoozeDelayFlagMask == ( u8ByteFlags & AddSnoozeDelayFlagMask ) )
             {
+//                putc(13);putc('A');putc('L');putc('A');putc('R');putc('M');putc('T');putc('E');
                 AddTimeToAlarm_3by();
                 u8ByteFlags &= ~AddSnoozeDelayFlagMask;
             }
             
             if( SetAlarmFlagMask == ( u8ByteFlags & SetAlarmFlagMask ) )
             {
+//                putc(13);putc('S');putc('e');putc('t');putc('A');putc('l');putc('a');putc('r');putc('m');
                 DS_String_To_Massiv_Clock_3by(u8Alarm,cMsgClock);
                 DS_Print_Clock_3by(u8Alarm,1);
                 u8ByteFlags &= ~SetAlarmFlagMask;
